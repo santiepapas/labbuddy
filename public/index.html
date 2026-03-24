@@ -82,9 +82,9 @@ nav button.active{background:var(--accent);color:#fff}
 .stp{display:flex;align-items:center;gap:8px;background:var(--card);border-radius:8px;padding:8px 14px}
 .stp-n{width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
 .sinfo{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
-.sibox{padding:14px;border-radius:10px;border:1px solid}
-.sibox h5{font-size:10px;text-transform:uppercase;letter-spacing:0.8px;font-weight:700;margin-bottom:4px}
-.sibox p{font-size:13px;line-height:1.5;color:var(--muted)}
+.sibox{padding:16px 18px;border-radius:10px;border:1px solid}
+.sibox h5{font-size:10px;text-transform:uppercase;letter-spacing:0.8px;font-weight:700;margin-bottom:6px}
+.sibox p{font-size:13px;line-height:1.7;color:var(--muted)}
 .trow{display:flex;align-items:center;justify-content:space-between;background:var(--surface);border:2px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px}
 .tnm{font-size:13px;color:var(--muted);font-weight:500}
 .tdisp{font-size:28px;font-family:'Courier New',monospace;font-weight:700}
@@ -602,12 +602,12 @@ const timers=[
 let flashcards=[];
 function buildFlashcards(){
   flashcards=[];
-  organisms.forEach(o=>{flashcards.push({cat:"Organisms",q:o.name,a:`${o.type} | ${o.morphology}\nDiseases: ${o.diseases.slice(0,3).join(", ")}\nLab: ${o.lab}\nTx: ${o.treatment}`});});
+  organisms.forEach(o=>{flashcards.push({cat:"Organisms",q:o.name,a:`${o.type}  \u2022  ${o.morphology}\n\nDiseases\n${o.diseases.slice(0,3).map(d=>'\u2022 '+d).join('\n')}\n\nLab ID\n${o.lab}\n\nTreatment\n${o.treatment}`});});
   aminoAcids.forEach(a=>{flashcards.push({cat:"Amino Acids",q:`${a.name} (${a.three}/${a.one})`,a:`Type: ${a.type}\n${a.feature}`});});
   nucleicData.dna.forEach(d=>{flashcards.push({cat:"Nucleic Acids",q:`DNA: ${d.title}`,a:d.info});});
   nucleicData.rna.forEach(r=>{flashcards.push({cat:"Nucleic Acids",q:`RNA: ${r.title}`,a:r.info});});
-  labStains.forEach(s=>{flashcards.push({cat:"Staining",q:s.name,a:`Result: ${s.result}\nTip: ${s.tip}`});});
-  mediaGuide.forEach(m=>{flashcards.push({cat:"Media",q:m.name,a:`${m.purpose}\n${m.results.map(r=>r.label+': '+r.example).join('\n')}`});});
+  labStains.forEach(s=>{flashcards.push({cat:"Staining",q:s.name,a:`Result\n${s.result}\n\nPro Tip\n${s.tip}`});});
+  mediaGuide.forEach(m=>{flashcards.push({cat:"Media",q:m.name,a:`${m.purpose}\n\n${m.results.map(r=>'\u2022 '+r.label+'\n  '+r.example).join('\n')}`});});
 }
 buildFlashcards();
 
@@ -784,8 +784,8 @@ function renderMedia(){
     '<p style="color:var(--muted);margin-bottom:16px;font-size:.9rem">Visual reference for selective & differential media used in clinical microbiology.</p>'+
     mediaGuide.map(m=>'<div class="media-card"><h3>'+m.name+'</h3>'+
       '<p style="color:var(--muted);font-size:.85rem;margin-bottom:4px"><strong style="color:var(--text)">Purpose:</strong> '+m.purpose+'</p>'+
-      '<p style="color:var(--muted);font-size:.85rem"><strong style="color:var(--text)">Selective:</strong> '+m.selective+'</p>'+
-      '<p style="color:var(--muted);font-size:.85rem;margin-bottom:8px"><strong style="color:var(--text)">Differential:</strong> '+m.differential+'</p>'+
+      '<p style="color:var(--muted);font-size:.85rem;margin-bottom:4px"><strong style="color:var(--text)">Selective:</strong> '+m.selective+'</p>'+
+      '<p style="color:var(--muted);font-size:.85rem;margin-bottom:10px"><strong style="color:var(--text)">Differential:</strong> '+m.differential+'</p>'+
       '<div class="media-row">'+m.results.map(r=>
         '<div class="media-example"><div style="display:flex;align-items:center;gap:10px;margin-bottom:6px"><div style="width:28px;height:28px;border-radius:50%;background:'+r.color+';flex-shrink:0"></div><h5>'+r.label+'</h5></div><p>'+r.example+'</p></div>'
       ).join('')+'</div></div>').join('');
@@ -901,8 +901,20 @@ function renderFlashcard(){
   if(fcDeck.length===0){document.getElementById('fcContent').textContent='No cards available';return;}
   const card=fcDeck[fcIndex];
   document.getElementById('fcLabel').textContent=fcFlipped?'Answer':'Term';
-  document.getElementById('fcContent').textContent=fcFlipped?card.a:card.q;
-  document.getElementById('fcContent').style.whiteSpace='pre-line';
+  const el=document.getElementById('fcContent');
+  if(fcFlipped){
+    el.style.whiteSpace='pre-line';
+    el.style.textAlign='left';
+    el.style.fontSize='1rem';
+    el.style.lineHeight='1.7';
+    el.textContent=card.a;
+  } else {
+    el.style.whiteSpace='normal';
+    el.style.textAlign='center';
+    el.style.fontSize='1.3rem';
+    el.style.lineHeight='1.5';
+    el.textContent=card.q;
+  }
   document.getElementById('fcCount').textContent=`Card ${fcIndex+1} of ${fcDeck.length}`;
   document.getElementById('fcCat').textContent=card.cat;
 }
@@ -956,6 +968,22 @@ function answerQuiz(el,selected,correct){
 // ══════════════════════════════════════
 // TIMERS
 // ══════════════════════════════════════
+let audioCtx=null;
+function playTimerBeep(){
+  if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+  const now=audioCtx.currentTime;
+  // 3 seconds of repeating beeps (beep on/off pattern)
+  for(let i=0;i<6;i++){
+    const osc=audioCtx.createOscillator();
+    const gain=audioCtx.createGain();
+    osc.connect(gain);gain.connect(audioCtx.destination);
+    osc.frequency.value=i%2===0?880:660;
+    osc.type='sine';
+    gain.gain.value=0.3;
+    osc.start(now+i*0.5);
+    osc.stop(now+i*0.5+0.35);
+  }
+}
 function renderTimers(){
   document.getElementById('timersContent').innerHTML=
     '<div style="max-width:560px;margin:0 auto"><div class="sectitle">Lab Timers</div>'+
@@ -974,7 +1002,7 @@ function renderTimers(){
 function togT(i){
   const t=timers[i];
   if(t.on){clearInterval(t.iv);t.on=false;}
-  else{t.on=true;t.iv=setInterval(()=>{if(t.r<=0){clearInterval(t.iv);t.on=false;}else t.r--;renderTimers();},1000);}
+  else{t.on=true;t.iv=setInterval(()=>{if(t.r<=0){clearInterval(t.iv);t.on=false;playTimerBeep();}else t.r--;renderTimers();},1000);}
   renderTimers();
 }
 function rstT(i){clearInterval(timers[i].iv);timers[i].r=timers[i].d;timers[i].on=false;renderTimers();}

@@ -6,14 +6,14 @@
 <title>LabBuddy — Microbiology Study Companion</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0c0a1d;--surface:#1a1530;--card:#2a2345;--accent:#e879f9;--accent2:#c084fc;--green:#34d399;--red:#fb7185;--yellow:#fbbf24;--text:#f8fafc;--muted:#a5b4cb;--border:#3b3260}
+:root{--bg:#0c0a1d;--surface:#1a1530;--card:#2a2345;--accent:#e879f9;--accent2:#c084fc;--green:#34d399;--red:#fb7185;--yellow:#fbbf24;--cyan:#22d3ee;--orange:#fb923c;--text:#f8fafc;--muted:#a5b4cb;--border:#3b3260}
 body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
-.app{max-width:900px;margin:0 auto;padding:16px}
+.app{max-width:960px;margin:0 auto;padding:16px}
 header{text-align:center;padding:24px 0 16px}
 header h1{font-size:2rem;background:linear-gradient(135deg,var(--accent),#38bdf8,var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-header p{color:var(--muted);margin-top:4px;font-size:.95rem}
-nav{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin:16px 0;padding:8px;background:var(--surface);border-radius:12px}
-nav button{padding:10px 16px;border:none;border-radius:8px;background:transparent;color:var(--muted);cursor:pointer;font-size:.9rem;font-weight:500;transition:.2s}
+header p{color:var(--muted);margin-top:4px;font-size:.9rem}
+nav{display:flex;gap:5px;flex-wrap:wrap;justify-content:center;margin:16px 0;padding:8px;background:var(--surface);border-radius:12px;position:sticky;top:0;z-index:100}
+nav button{padding:9px 14px;border:none;border-radius:8px;background:transparent;color:var(--muted);cursor:pointer;font-size:.85rem;font-weight:500;transition:.2s}
 nav button:hover{color:var(--text);background:var(--card)}
 nav button.active{background:var(--accent);color:#fff}
 .section{display:none;animation:fadeIn .3s}
@@ -23,13 +23,13 @@ nav button.active{background:var(--accent);color:#fff}
 .card h3{color:var(--accent2);margin-bottom:8px;font-size:1.1rem}
 .card p,.card li{color:var(--muted);line-height:1.6;font-size:.93rem}
 .card ul{padding-left:20px;margin-top:6px}
-.search-box{width:100%;padding:12px 16px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:1rem;margin-bottom:16px;outline:none}
+.search-box{width:100%;padding:12px 16px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:1rem;margin-bottom:16px;outline:none;position:sticky;top:56px;z-index:90}
 .search-box:focus{border-color:var(--accent)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
 .org-card{background:var(--surface);border-radius:10px;padding:16px;border:1px solid var(--border);cursor:pointer;transition:.2s}
 .org-card:hover{border-color:var(--accent);transform:translateY(-2px)}
 .org-card h4{color:var(--accent2);font-size:1rem}
-.org-card .type{font-size:.75rem;color:var(--green);background:rgba(34,197,94,.15);padding:2px 8px;border-radius:4px;display:inline-block;margin:4px 0}
+.org-card .type{font-size:.75rem;color:var(--green);background:rgba(52,211,153,.15);padding:2px 8px;border-radius:4px;display:inline-block;margin:4px 0}
 .org-card p{color:var(--muted);font-size:.85rem;margin-top:4px}
 .detail-view{background:var(--surface);border-radius:12px;padding:24px;border:1px solid var(--border)}
 .detail-view h2{color:var(--accent2);margin-bottom:4px}
@@ -38,15 +38,15 @@ nav button.active{background:var(--accent);color:#fff}
 .detail-view th,.detail-view td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--border);font-size:.9rem}
 .detail-view th{color:var(--accent2);font-weight:600}
 .detail-view td{color:var(--muted)}
-.back-btn{background:var(--card);color:var(--text);border:none;padding:8px 16px;border-radius:8px;cursor:pointer;margin-bottom:16px;font-size:.9rem}
+.back-btn{background:var(--card);color:var(--text);border:none;padding:10px 18px;border-radius:8px;cursor:pointer;margin-bottom:16px;font-size:.9rem;min-height:44px}
 .back-btn:hover{background:var(--accent)}
 .quiz-box{text-align:center;padding:20px}
-.quiz-box h3{font-size:1.2rem;margin-bottom:20px;color:var(--text)}
+.quiz-box h3{font-size:1.15rem;margin-bottom:20px;color:var(--text)}
 .quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:600px;margin:0 auto}
-.quiz-option{padding:14px;border:2px solid var(--border);border-radius:10px;background:var(--card);color:var(--text);cursor:pointer;font-size:.95rem;transition:.2s;text-align:left}
+.quiz-option{padding:14px;border:2px solid var(--border);border-radius:10px;background:var(--card);color:var(--text);cursor:pointer;font-size:.95rem;transition:.2s;text-align:left;min-height:48px}
 .quiz-option:hover{border-color:var(--accent)}
-.quiz-option.correct{border-color:var(--green);background:rgba(34,197,94,.15)}
-.quiz-option.wrong{border-color:var(--red);background:rgba(239,68,68,.15)}
+.quiz-option.correct{border-color:var(--green);background:rgba(52,211,153,.15)}
+.quiz-option.wrong{border-color:var(--red);background:rgba(251,113,133,.15)}
 .score-bar{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:var(--surface);border-radius:10px;margin-bottom:16px}
 .score-bar span{font-size:.95rem;color:var(--muted)}
 .score-bar .score{color:var(--green);font-weight:700;font-size:1.1rem}
@@ -58,12 +58,12 @@ nav button.active{background:var(--accent);color:#fff}
 .flashcard .content{font-size:1.3rem;line-height:1.5}
 .flashcard .hint{position:absolute;bottom:12px;font-size:.8rem;color:var(--muted)}
 .fc-controls{display:flex;gap:10px;justify-content:center;margin-top:16px}
-.fc-controls button{padding:10px 24px;border:none;border-radius:8px;cursor:pointer;font-size:.9rem;font-weight:500}
+.fc-controls button{padding:10px 24px;border:none;border-radius:8px;cursor:pointer;font-size:.9rem;font-weight:500;min-height:44px}
 .btn-prev,.btn-next{background:var(--card);color:var(--text)}
 .btn-prev:hover,.btn-next:hover{background:var(--accent)}
 .btn-shuffle{background:var(--accent);color:#fff}
 .category-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
-.category-filter button{padding:6px 14px;border:1px solid var(--border);border-radius:20px;background:transparent;color:var(--muted);cursor:pointer;font-size:.82rem;transition:.2s}
+.category-filter button{padding:6px 14px;border:1px solid var(--border);border-radius:20px;background:transparent;color:var(--muted);cursor:pointer;font-size:.82rem;transition:.2s;min-height:36px}
 .category-filter button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
 .aa-table{width:100%;border-collapse:collapse}
 .aa-table th{background:var(--card);color:var(--accent2);padding:10px 12px;text-align:left;font-size:.85rem;position:sticky;top:0}
@@ -71,11 +71,10 @@ nav button.active{background:var(--accent);color:#fff}
 .aa-table tr:hover td{background:rgba(232,121,249,.08)}
 .aa-code{font-family:'Courier New',monospace;color:var(--green);font-weight:600}
 .tab-bar{display:flex;gap:4px;margin-bottom:16px}
-.tab-bar button{padding:8px 16px;border:none;border-radius:8px 8px 0 0;background:var(--card);color:var(--muted);cursor:pointer;font-size:.88rem}
+.tab-bar button{padding:8px 16px;border:none;border-radius:8px 8px 0 0;background:var(--card);color:var(--muted);cursor:pointer;font-size:.88rem;min-height:40px}
 .tab-bar button.active{background:var(--accent);color:#fff}
 .na-card{background:var(--surface);border-radius:10px;padding:16px;border:1px solid var(--border);margin-bottom:10px}
 .na-card h4{color:var(--accent2);font-size:.95rem}
-.na-card .struct{color:var(--green);font-size:.85rem;margin:4px 0}
 .na-card p{color:var(--muted);font-size:.85rem}
 .sectitle{font-size:1.3rem;font-weight:700;color:var(--accent2);margin-bottom:16px;padding-bottom:8px;border-bottom:2px solid var(--border)}
 .scard{padding:22px}
@@ -90,52 +89,84 @@ nav button.active{background:var(--accent);color:#fff}
 .tnm{font-size:13px;color:var(--muted);font-weight:500}
 .tdisp{font-size:28px;font-family:'Courier New',monospace;font-weight:700}
 .tbtns{display:flex;gap:6px}
-.tbtn{padding:8px 16px;border-radius:8px;border:2px solid;font-size:12px;font-weight:600;cursor:pointer}
+.tbtn{padding:8px 16px;border-radius:8px;border:2px solid;font-size:12px;font-weight:600;cursor:pointer;min-height:40px}
 .tbtn-go{border-color:var(--accent);background:var(--accent);color:#fff}
 .tbtn-go:hover{background:#d946ef}
 .tbtn-pause{border-color:var(--yellow);background:rgba(251,191,36,.15);color:var(--yellow)}
 .tbtn-rst{border-color:var(--border);background:var(--card);color:var(--muted)}
 .tbtn-rst:hover{background:var(--border)}
-@media(max-width:600px){.quiz-options{grid-template-columns:1fr}.grid{grid-template-columns:1fr}header h1{font-size:1.5rem}nav button{padding:8px 12px;font-size:.82rem}.sinfo{grid-template-columns:1fr}.trow{flex-wrap:wrap;gap:8px}.tdisp{font-size:22px}}
+/* ID TREE */
+.tree-step{background:var(--surface);border:2px solid var(--border);border-radius:14px;padding:24px;text-align:center;margin-bottom:16px}
+.tree-step h3{color:var(--accent2);margin-bottom:12px;font-size:1.1rem}
+.tree-opts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.tree-btn{padding:12px 24px;border:2px solid var(--border);border-radius:10px;background:var(--card);color:var(--text);cursor:pointer;font-size:.95rem;transition:.2s;min-height:48px;font-weight:500}
+.tree-btn:hover{border-color:var(--accent);background:rgba(232,121,249,.1)}
+.tree-btn.selected{border-color:var(--green);background:rgba(52,211,153,.15);color:var(--green)}
+.tree-result{background:linear-gradient(135deg,rgba(52,211,153,.1),rgba(192,132,252,.1));border:2px solid var(--green);border-radius:14px;padding:24px;margin-top:16px}
+.tree-result h3{color:var(--green);margin-bottom:8px}
+.tree-result p{color:var(--muted);font-size:.9rem;line-height:1.6}
+.tree-path{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;align-items:center}
+.tree-path .tp{background:var(--card);color:var(--accent2);padding:4px 12px;border-radius:6px;font-size:.8rem}
+.tree-path .arrow{color:var(--muted);font-size:.8rem}
+/* MEDIA GUIDE */
+.media-card{background:var(--surface);border-radius:12px;padding:20px;border:1px solid var(--border);margin-bottom:14px}
+.media-card h3{color:var(--accent2);margin-bottom:6px;font-size:1.05rem}
+.media-card .plate{display:inline-block;width:60px;height:60px;border-radius:50%;margin:8px 8px 8px 0;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;text-align:center;line-height:1.2}
+.media-row{display:flex;flex-wrap:wrap;gap:12px;margin:8px 0}
+.media-example{background:var(--card);border-radius:8px;padding:12px 16px;flex:1;min-width:180px}
+.media-example h5{font-size:.8rem;color:var(--accent2);margin-bottom:4px}
+.media-example p{font-size:.85rem;color:var(--muted)}
+/* VIGNETTE */
+.vignette-box{background:linear-gradient(135deg,var(--surface),var(--card));border:2px solid var(--border);border-radius:16px;padding:30px;text-align:center;margin-bottom:16px}
+.vignette-box .scenario{font-size:1.1rem;line-height:1.7;color:var(--text);margin-bottom:20px}
+.vignette-box .buzzwords{color:var(--yellow);font-weight:600}
+.vig-btn{padding:12px 28px;border:none;border-radius:10px;cursor:pointer;font-size:.95rem;font-weight:600;min-height:48px;transition:.2s}
+.vig-primary{background:var(--accent);color:#fff}.vig-primary:hover{background:#d946ef}
+.vig-secondary{background:var(--card);color:var(--text);border:2px solid var(--border)}.vig-secondary:hover{border-color:var(--accent)}
+/* LAB MATH */
+.calc-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:16px}
+.calc-card h3{color:var(--accent2);margin-bottom:12px}
+.calc-card label{display:block;color:var(--muted);font-size:.85rem;margin-bottom:4px;margin-top:12px}
+.calc-input{width:100%;max-width:280px;padding:10px 14px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:1rem;outline:none}
+.calc-input:focus{border-color:var(--accent)}
+.calc-result{margin-top:16px;padding:16px;background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.3);border-radius:10px;font-size:1.1rem;color:var(--green);font-weight:700}
+.calc-formula{color:var(--muted);font-size:.85rem;margin-top:8px;font-style:italic}
+@media(max-width:600px){.quiz-options{grid-template-columns:1fr}.grid{grid-template-columns:1fr}header h1{font-size:1.5rem}nav button{padding:8px 10px;font-size:.78rem}.sinfo{grid-template-columns:1fr}.trow{flex-wrap:wrap;gap:8px}.tdisp{font-size:22px}.tree-opts{flex-direction:column}.media-row{flex-direction:column}}
 </style>
 </head>
 <body>
 <div class="app">
 <header>
-<h1>🔬 LabBuddy</h1>
-<p>Microbiology Study Companion — Organisms · Staining · Amino Acids · Nucleic Acids · Flashcards · Quizzes · Timers</p>
+<h1>LabBuddy</h1>
+<p>BIO 261 Microbiology Study Companion</p>
 </header>
 <nav id="mainNav">
 <button class="active" onclick="showSection('organisms')">Organisms</button>
 <button onclick="showSection('stains')">Staining</button>
 <button onclick="showSection('amino')">Amino Acids</button>
 <button onclick="showSection('nucleic')">Nucleic Acids</button>
+<button onclick="showSection('idtree')">ID Tree</button>
+<button onclick="showSection('media')">Media Guide</button>
 <button onclick="showSection('flashcards')">Flashcards</button>
 <button onclick="showSection('quiz')">Quiz</button>
+<button onclick="showSection('vignettes')">Vignettes</button>
+<button onclick="showSection('labmath')">Lab Math</button>
 <button onclick="showSection('timers')">Timers</button>
 </nav>
 
-<div id="stains" class="section">
-<div id="stainsContent"></div>
-</div>
-
-<div id="timers" class="section">
-<div id="timersContent"></div>
-</div>
-
 <div id="organisms" class="section active">
-<input type="text" class="search-box" placeholder="Search organisms..." oninput="filterOrganisms(this.value)">
+<input type="text" class="search-box" placeholder="Search organisms by name, type, disease, lab finding..." oninput="filterOrganisms(this.value)">
 <div class="category-filter" id="orgFilter"></div>
 <div class="grid" id="orgGrid"></div>
 <div class="detail-view" id="orgDetail" style="display:none"></div>
 </div>
 
+<div id="stains" class="section"><div id="stainsContent"></div></div>
 <div id="amino" class="section">
 <input type="text" class="search-box" placeholder="Search amino acids..." oninput="filterAA(this.value)">
 <div class="category-filter" id="aaFilter"></div>
 <div style="overflow-x:auto"><table class="aa-table" id="aaTable"><thead><tr><th>Name</th><th>3-Letter</th><th>1-Letter</th><th>Type</th><th>Key Feature</th></tr></thead><tbody></tbody></table></div>
 </div>
-
 <div id="nucleic" class="section">
 <div class="tab-bar" id="naTab">
 <button class="active" onclick="showNATab('dna')">DNA</button>
@@ -144,7 +175,8 @@ nav button.active{background:var(--accent);color:#fff}
 </div>
 <div id="naContent"></div>
 </div>
-
+<div id="idtree" class="section"><div id="idtreeContent"></div></div>
+<div id="media" class="section"><div id="mediaContent"></div></div>
 <div id="flashcards" class="section">
 <div class="category-filter" id="fcFilter"></div>
 <div class="score-bar"><span id="fcCount">Card 1 of 1</span><span class="score" id="fcCat"></span></div>
@@ -154,12 +186,11 @@ nav button.active{background:var(--accent);color:#fff}
 <div class="hint">Click to flip</div>
 </div>
 <div class="fc-controls">
-<button class="btn-prev" onclick="prevCard()">← Prev</button>
+<button class="btn-prev" onclick="prevCard()">&#8592; Prev</button>
 <button class="btn-shuffle" onclick="shuffleCards()">Shuffle</button>
-<button class="btn-next" onclick="nextCard()">Next →</button>
+<button class="btn-next" onclick="nextCard()">Next &#8594;</button>
 </div>
 </div>
-
 <div id="quiz" class="section">
 <div class="category-filter" id="quizFilter"></div>
 <div class="score-bar">
@@ -169,132 +200,409 @@ nav button.active{background:var(--accent);color:#fff}
 <div class="progress-bar"><div class="progress-fill" id="qProgress" style="width:0%"></div></div>
 <div class="quiz-box" id="quizBox"></div>
 </div>
+<div id="vignettes" class="section"><div id="vigContent"></div></div>
+<div id="labmath" class="section"><div id="labmathContent"></div></div>
+<div id="timers" class="section"><div id="timersContent"></div></div>
 </div>
 
 <script>
-// ── DATA ──
-const organisms = [
-  {name:"Staphylococcus aureus",type:"Gram+ Cocci",gram:"positive",morphology:"Clusters",diseases:["Skin infections","Endocarditis","Osteomyelitis","Toxic Shock Syndrome","Food poisoning"],virulence:["Coagulase","Protein A","Hemolysins","TSST-1","Enterotoxins"],lab:"Catalase +, Coagulase +, Gold colonies on MSA",treatment:"Nafcillin/Oxacillin (MSSA); Vancomycin (MRSA)",notes:"Most common cause of skin/soft tissue infections. MRSA is a major nosocomial pathogen."},
-  {name:"Streptococcus pyogenes",type:"Gram+ Cocci",gram:"positive",morphology:"Chains",diseases:["Pharyngitis","Scarlet fever","Cellulitis","Necrotizing fasciitis","Rheumatic fever","Glomerulonephritis"],virulence:["M protein","Streptolysin O/S","Hyaluronidase","Streptokinase","DNase"],lab:"Catalase −, Beta-hemolytic, Bacitracin sensitive, PYR +",treatment:"Penicillin (no resistance reported)",notes:"Group A Strep (GAS). Post-infectious sequelae include rheumatic fever and PSGN."},
-  {name:"Streptococcus pneumoniae",type:"Gram+ Cocci",gram:"positive",morphology:"Diplococci (lancet-shaped)",diseases:["Pneumonia","Meningitis","Otitis media","Sinusitis"],virulence:["Polysaccharide capsule","IgA protease","Pneumolysin","Adhesins"],lab:"Catalase −, Alpha-hemolytic, Optochin sensitive, Bile soluble",treatment:"Penicillin / Ceftriaxone; Vancomycin for resistant strains",notes:"#1 cause of community-acquired pneumonia, meningitis in adults, otitis media in children."},
-  {name:"Escherichia coli",type:"Gram− Rods",gram:"negative",morphology:"Rods",diseases:["UTI","Neonatal meningitis","Traveler's diarrhea","Hemolytic Uremic Syndrome (EHEC)","Sepsis"],virulence:["LPS (endotoxin)","Type 1 pili","K1 capsule","Shiga-like toxin (EHEC)","Heat-labile/stable toxins (ETEC)"],lab:"Lactose fermenter, Indole +, Green sheen on EMB agar",treatment:"TMP-SMX or fluoroquinolones for UTI; supportive for EHEC (no antibiotics)",notes:"Most common cause of UTI. Multiple pathotypes: ETEC, EHEC, EPEC, EIEC, EAEC."},
-  {name:"Neisseria meningitidis",type:"Gram− Cocci",gram:"negative",morphology:"Diplococci (kidney-bean shaped)",diseases:["Meningococcemia","Meningitis","Waterhouse-Friderichsen syndrome"],virulence:["Polysaccharide capsule","LPS","IgA protease","Pili"],lab:"Oxidase +, Maltose and Glucose fermenter, Grows on Thayer-Martin/chocolate agar",treatment:"Ceftriaxone + Dexamethasone; Rifampin prophylaxis for close contacts",notes:"Causes epidemic meningitis. Vaccine available for serogroups A, C, W, Y, B."},
-  {name:"Mycobacterium tuberculosis",type:"Acid-Fast Bacilli",gram:"neither",morphology:"Rods (acid-fast)",diseases:["Pulmonary TB","Miliary TB","Pott disease","TB meningitis"],virulence:["Mycolic acid (cord factor)","Sulfatides","LAM"],lab:"Acid-fast (Ziehl-Neelsen), Lowenstein-Jensen agar, slow grower (weeks)",treatment:"RIPE: Rifampin, Isoniazid, Pyrazinamide, Ethambutol",notes:"Leading infectious killer worldwide. Granulomas with caseating necrosis. PPD/IGRA for screening."},
-  {name:"Clostridium difficile",type:"Gram+ Rods",gram:"positive",morphology:"Rods (spore-forming, anaerobic)",diseases:["Antibiotic-associated diarrhea","Pseudomembranous colitis","Toxic megacolon"],virulence:["Toxin A (enterotoxin)","Toxin B (cytotoxin)","Spores"],lab:"Toxin assay (ELISA or PCR), Anaerobic culture",treatment:"Oral Vancomycin or Fidaxomicin; Fecal transplant for recurrent",notes:"Triggered by antibiotic use (clindamycin, fluoroquinolones, ampicillin). Spores persist in environment."},
-  {name:"Pseudomonas aeruginosa",type:"Gram− Rods",gram:"negative",morphology:"Rods",diseases:["Pneumonia (CF/ventilator)","Burn wound infections","Otitis externa","UTI (catheter)","Sepsis"],virulence:["Exotoxin A","Elastase","Phospholipase C","Pyocyanin","Biofilm","LPS"],lab:"Oxidase +, Non-lactose fermenter, Blue-green pigment, Grape-like odor, Grows at 42°C",treatment:"Anti-pseudomonal beta-lactams (piperacillin-tazobactam, cefepime, meropenem) + aminoglycoside",notes:"Opportunistic. Intrinsically resistant to many antibiotics. Common in CF, burns, ICU patients."},
-  {name:"Candida albicans",type:"Fungi",gram:"N/A",morphology:"Yeast with pseudohyphae and true hyphae",diseases:["Oral thrush","Vulvovaginal candidiasis","Esophageal candidiasis","Candidemia","Diaper rash"],virulence:["Adhesins","Biofilm formation","Phenotypic switching","Secreted aspartyl proteases","Hyphae formation"],lab:"Germ tube +, Grows on Sabouraud agar, Chlamydospores on cornmeal agar",treatment:"Fluconazole (mucosal); Echinocandins or Amphotericin B (systemic)",notes:"Most common fungal infection in immunocompromised. Dimorphic at 37°C."},
-  {name:"Neisseria gonorrhoeae",type:"Gram− Cocci",gram:"negative",morphology:"Diplococci (kidney-bean shaped, intracellular)",diseases:["Gonorrhea (urethritis, cervicitis)","PID","Disseminated gonococcal infection","Neonatal ophthalmia"],virulence:["Pili (antigenic variation)","Opa proteins","LOS","IgA protease","Beta-lactamase"],lab:"Oxidase +, Glucose fermenter only (not maltose), Thayer-Martin agar, Intracellular diplococci on Gram stain",treatment:"Ceftriaxone 500mg IM (single dose) + treat for Chlamydia if not ruled out",notes:"Sexually transmitted. No vaccine due to antigenic variation. Increasing antibiotic resistance."},
-  {name:"Salmonella enterica",type:"Gram− Rods",gram:"negative",morphology:"Rods (flagellated)",diseases:["Gastroenteritis","Typhoid fever (S. typhi)","Bacteremia","Osteomyelitis (sickle cell)"],virulence:["Vi capsule (S. typhi)","LPS","Type III secretion system","Flagella"],lab:"Non-lactose fermenter, H₂S + on TSI, Grows on Hektoen/XLD agar",treatment:"Fluoroquinolones or Ceftriaxone for typhoid; Supportive for gastroenteritis",notes:"Spread through contaminated food/water. Typhoid has rose spots, relative bradycardia. Chronic carriers (gallbladder)."},
-  {name:"Clostridioides (Clostridium) botulinum",type:"Gram+ Rods",gram:"positive",morphology:"Rods (spore-forming, anaerobic)",diseases:["Botulism (foodborne, infant, wound)","Floppy baby syndrome"],virulence:["Botulinum toxin (blocks ACh release at NMJ)"],lab:"Mouse bioassay, Toxin detection in serum/stool",treatment:"Antitoxin; supportive (ventilation); do NOT give antibiotics for infant botulism",notes:"Descending flaccid paralysis. Honey is a risk for infants. Toxin used therapeutically (Botox)."}
+// ══════════════════════════════════════
+// DATA: ORGANISMS (Full BIO 261 List)
+// ══════════════════════════════════════
+const organisms=[
+// ── GRAM-POSITIVE COCCI ──
+{name:"Staphylococcus aureus",type:"Gram+ Cocci",gram:"positive",morphology:"Clusters",diseases:["Skin infections (impetigo, cellulitis, abscess)","Endocarditis","Osteomyelitis","Toxic Shock Syndrome","Food poisoning","Sepsis","Pneumonia"],virulence:["Coagulase","Protein A","Hemolysins (alpha, beta)","TSST-1","Enterotoxins","PVL (Panton-Valentine Leukocidin)"],lab:"Catalase +, Coagulase +, Beta-hemolytic, MSA Yellow (mannitol fermenter), Gold pigment",treatment:"Nafcillin/Oxacillin (MSSA); Vancomycin (MRSA)",notes:"Most common cause of skin/soft tissue infections. MRSA is major nosocomial pathogen. Protein A binds IgG Fc region."},
+{name:"Staphylococcus epidermidis",type:"Gram+ Cocci",gram:"positive",morphology:"Clusters",diseases:["Prosthetic device infections","Catheter infections","Endocarditis (prosthetic valves)"],virulence:["Biofilm formation","Polysaccharide adhesins"],lab:"Catalase +, Coagulase -, Novobiocin SENSITIVE, MSA Pink (non-fermenter)",treatment:"Vancomycin (often methicillin-resistant)",notes:"Normal skin flora. #1 cause of infections on prosthetic devices and indwelling catheters. Biofilm producer."},
+{name:"Staphylococcus saprophyticus",type:"Gram+ Cocci",gram:"positive",morphology:"Clusters",diseases:["UTI in young sexually active women","Cystitis"],virulence:["Urease","Surface adhesins"],lab:"Catalase +, Coagulase -, Novobiocin RESISTANT",treatment:"TMP-SMX or Nitrofurantoin",notes:"2nd most common cause of UTI in young women (after E. coli). Novobiocin resistance distinguishes from S. epidermidis."},
+{name:"Streptococcus pyogenes",type:"Gram+ Cocci",gram:"positive",morphology:"Chains",diseases:["Pharyngitis","Scarlet fever","Cellulitis","Necrotizing fasciitis","Impetigo","Rheumatic fever (post-infectious)","Post-strep glomerulonephritis"],virulence:["M protein","Streptolysin O (ASO titer)","Streptolysin S","Hyaluronidase","Streptokinase","DNase B","Erythrogenic toxin (scarlet fever)"],lab:"Catalase -, Beta-hemolytic, Bacitracin SENSITIVE, PYR +, Group A (Lancefield)",treatment:"Penicillin (no resistance reported)",notes:"Group A Strep (GAS). M protein is major virulence factor (anti-phagocytic). Jones criteria for rheumatic fever."},
+{name:"Streptococcus agalactiae",type:"Gram+ Cocci",gram:"positive",morphology:"Chains",diseases:["Neonatal meningitis","Neonatal sepsis","Neonatal pneumonia","Chorioamnionitis","UTI in pregnant women"],virulence:["Capsular polysaccharide","CAMP factor","Beta-hemolysin"],lab:"Catalase -, Beta-hemolytic, Bacitracin RESISTANT, CAMP test +, Hippurate hydrolysis +, Group B (Lancefield)",treatment:"Penicillin/Ampicillin + Gentamicin; Intrapartum prophylaxis",notes:"Group B Strep (GBS). Screen pregnant women at 35-37 weeks. #1 cause of neonatal meningitis/sepsis. CAMP factor enlarges S. aureus hemolysis zone."},
+{name:"Streptococcus pneumoniae",type:"Gram+ Cocci",gram:"positive",morphology:"Diplococci (lancet-shaped)",diseases:["Community-acquired pneumonia (#1)","Meningitis in adults (#1)","Otitis media in children (#1)","Sinusitis"],virulence:["Polysaccharide capsule (#1 virulence factor)","IgA protease","Pneumolysin","Adhesins","Autolysin"],lab:"Catalase -, Alpha-hemolytic, Optochin SENSITIVE, Bile soluble, Quellung reaction + (capsule swelling)",treatment:"Penicillin/Ceftriaxone; Vancomycin for resistant strains",notes:"Lancet-shaped diplococci. Rusty sputum in pneumonia. Capsule is most important virulence factor. Vaccines: PCV13, PPSV23."},
+{name:"Viridans Streptococci",type:"Gram+ Cocci",gram:"positive",morphology:"Chains",diseases:["Subacute bacterial endocarditis","Dental caries (S. mutans)"],virulence:["Dextrans (adhesion to damaged valves)","Glucans"],lab:"Catalase -, Alpha-hemolytic, Optochin RESISTANT, Bile insoluble",treatment:"Penicillin + Gentamicin",notes:"Normal oral flora. S. mutans causes dental caries. Subacute endocarditis on DAMAGED valves (vs S. aureus = acute, normal valves). Distinguished from S. pneumoniae by optochin resistance."},
+{name:"Enterococcus faecalis",type:"Gram+ Cocci",gram:"positive",morphology:"Chains/pairs",diseases:["UTI","Biliary tract infections","Endocarditis","Intra-abdominal infections"],virulence:["Intrinsic antibiotic resistance","Cytolysin","Gelatinase"],lab:"Catalase -, Gamma-hemolytic (no hemolysis), Bile Esculin +, Growth in 6.5% NaCl, PYR +, Group D (Lancefield)",treatment:"Ampicillin + Gentamicin; Linezolid or Daptomycin for VRE",notes:"Enterococcus faecalis (more common) and E. faecium (more resistant). VRE = Vancomycin-Resistant Enterococci. Grows in bile and high salt."},
+
+// ── GRAM-POSITIVE RODS ──
+{name:"Bacillus anthracis",type:"Gram+ Rods",gram:"positive",morphology:"Rods (spore-forming, aerobic)",diseases:["Cutaneous anthrax (black eschar)","Pulmonary anthrax (woolsorter's disease)","GI anthrax"],virulence:["Poly-D-glutamate capsule (anti-phagocytic)","Edema factor (EF)","Lethal factor (LF)","Protective antigen (PA)"],lab:"Non-motile (distinguishes from B. cereus), Non-hemolytic, Medusa head colonies, Bamboo-stick appearance on Gram stain",treatment:"Ciprofloxacin or Doxycycline; Antitoxin for severe",notes:"Only Bacillus that is non-motile and has a capsule. Spores in soil. Bioterrorism agent. Cutaneous = painless black eschar."},
+{name:"Bacillus cereus",type:"Gram+ Rods",gram:"positive",morphology:"Rods (spore-forming, aerobic, motile)",diseases:["Emetic food poisoning (reheated rice)","Diarrheal food poisoning"],virulence:["Cereulide (emetic toxin, heat-stable, preformed)","Enterotoxin (diarrheal, heat-labile)"],lab:"Motile (distinguishes from B. anthracis), Beta-hemolytic",treatment:"Supportive (self-limiting)",notes:"Emetic type: 1-6 hrs, reheated FRIED RICE (preformed toxin). Diarrheal type: 8-16 hrs, watery diarrhea. Emetic toxin is heat-stable."},
+{name:"Clostridium tetani",type:"Gram+ Rods",gram:"positive",morphology:"Rods (spore-forming, anaerobic)",diseases:["Tetanus (lockjaw)","Spastic paralysis","Risus sardonicus","Opisthotonus"],virulence:["Tetanospasmin (blocks glycine/GABA release from Renshaw cells)"],lab:"Drumstick-shaped spores (terminal), Strict anaerobe",treatment:"Tetanus immunoglobulin (TIG) + Metronidazole + Wound debridement; DTaP/Tdap vaccine",notes:"Tetanospasmin blocks inhibitory neurotransmitters (glycine, GABA) = SPASTIC paralysis. Opposite of botulism. Wound contamination with soil."},
+{name:"Clostridioides difficile",type:"Gram+ Rods",gram:"positive",morphology:"Rods (spore-forming, anaerobic)",diseases:["Antibiotic-associated diarrhea","Pseudomembranous colitis","Toxic megacolon"],virulence:["Toxin A (enterotoxin - attracts neutrophils)","Toxin B (cytotoxin - destroys cytoskeleton)","Spores"],lab:"Toxin assay (ELISA or PCR for toxin B gene), Anaerobic culture, Cytotoxicity assay",treatment:"Oral Vancomycin or Fidaxomicin; Fecal microbiota transplant for recurrent",notes:"Triggered by antibiotic use (clindamycin, fluoroquinolones, ampicillin, 3rd-gen cephalosporins). Spores persist in hospital environment. Pseudomembranes on colonoscopy."},
+{name:"Clostridium botulinum",type:"Gram+ Rods",gram:"positive",morphology:"Rods (spore-forming, anaerobic)",diseases:["Foodborne botulism","Infant botulism (floppy baby)","Wound botulism"],virulence:["Botulinum toxin (blocks ACh release at NMJ, cleaves SNARE proteins)"],lab:"Mouse bioassay, Toxin detection in serum/stool/food",treatment:"Antitoxin (equine); Supportive (ventilation); Do NOT give antibiotics for infant botulism",notes:"DESCENDING flaccid paralysis (cranial nerves first). Honey risk for infants. Preformed toxin in canned foods. Toxin used therapeutically (Botox). Blocks ACh release."},
+{name:"Clostridium perfringens",type:"Gram+ Rods",gram:"positive",morphology:"Rods (spore-forming, anaerobic)",diseases:["Gas gangrene (myonecrosis)","Food poisoning (watery diarrhea)","Necrotizing enteritis"],virulence:["Alpha toxin (lecithinase/phospholipase C - destroys cell membranes)","Enterotoxin"],lab:"Double zone of beta-hemolysis on blood agar, Stormy fermentation in milk media, Lecithinase + on egg yolk agar",treatment:"Penicillin + Clindamycin + Surgical debridement (hyperbaric O2)",notes:"Gas gangrene: crepitus, rapid tissue destruction. Food poisoning: reheated meat, 8-16 hr onset. Alpha toxin = lecithinase."},
+{name:"Listeria monocytogenes",type:"Gram+ Rods",gram:"positive",morphology:"Rods (non-spore-forming, facultative intracellular)",diseases:["Neonatal meningitis/sepsis","Meningitis in immunocompromised/elderly","Gastroenteritis","Granulomatosis infantiseptica"],virulence:["Listeriolysin O (LLO - escapes phagosome)","ActA (actin rockets for cell-to-cell spread)","Internalins"],lab:"Catalase +, Beta-hemolytic, Tumbling motility at room temp (22C), Cold enrichment (grows at 4C)",treatment:"Ampicillin + Gentamicin (NOT cephalosporins)",notes:"Facultative intracellular. Acquired from unpasteurized dairy, deli meats, soft cheeses. Dangerous in pregnant women (transplacental). Actin rockets = cell-to-cell spread."},
+{name:"Corynebacterium diphtheriae",type:"Gram+ Rods",gram:"positive",morphology:"Rods (club-shaped, V/L/Chinese letter arrangements)",diseases:["Diphtheria (pharyngeal pseudomembrane)","Myocarditis","Neuropathy"],virulence:["Diphtheria toxin (AB toxin - inactivates EF-2, blocks protein synthesis)","Encoded by beta-prophage"],lab:"Metachromatic (volutin) granules on Albert stain, Tellurite agar (black colonies), Elek test (toxin detection), Loeffler coagulated serum",treatment:"Diphtheria antitoxin + Erythromycin or Penicillin; DTaP vaccine",notes:"Toxin encoded by beta-prophage (lysogenic conversion). ADP-ribosylates EF-2. Gray pseudomembrane in throat. Bull neck appearance."},
+
+// ── GRAM-NEGATIVE COCCI & COCCOBACILLI ──
+{name:"Neisseria meningitidis",type:"Gram- Cocci",gram:"negative",morphology:"Diplococci (kidney-bean shaped)",diseases:["Meningococcemia","Meningitis","Waterhouse-Friderichsen syndrome (adrenal hemorrhage)","Purpura fulminans"],virulence:["Polysaccharide capsule","LPS/endotoxin","IgA protease","Pili"],lab:"Oxidase +, Maltose AND Glucose fermenter, Thayer-Martin/chocolate agar, Intracellular diplococci in CSF",treatment:"Ceftriaxone + Dexamethasone; Rifampin/Ciprofloxacin prophylaxis for close contacts",notes:"Epidemic meningitis (college dorms, military). Petechial rash. Waterhouse-Friderichsen = bilateral adrenal hemorrhage. Vaccine for A,C,W,Y,B. Ferments maltose (MeNingitidis = Maltose)."},
+{name:"Neisseria gonorrhoeae",type:"Gram- Cocci",gram:"negative",morphology:"Diplococci (kidney-bean shaped, intracellular)",diseases:["Gonorrhea (urethritis, cervicitis)","PID","Disseminated gonococcal infection (septic arthritis)","Neonatal ophthalmia","Fitz-Hugh-Curtis syndrome"],virulence:["Pili (antigenic/phase variation)","Opa proteins","LOS (lipooligosaccharide)","IgA protease","Beta-lactamase"],lab:"Oxidase +, Glucose fermenter ONLY (NOT maltose), Thayer-Martin agar, Intracellular diplococci on Gram stain",treatment:"Ceftriaxone 500mg IM single dose + treat for Chlamydia if not ruled out",notes:"STI. No vaccine (antigenic variation). Increasing resistance. No maltose fermentation (GONorrhoeae = Glucose Only, No Maltose). Erythromycin eye drops for neonatal prophylaxis."},
+{name:"Moraxella catarrhalis",type:"Gram- Cocci",gram:"negative",morphology:"Diplococci",diseases:["Otitis media (children)","Sinusitis","Bronchitis/pneumonia (COPD exacerbation)"],virulence:["Beta-lactamase","Outer membrane proteins"],lab:"Oxidase +, DNase +, Hockey puck test (slides across agar when pushed)",treatment:"Amoxicillin-clavulanate (beta-lactamase producer)",notes:"3rd most common cause of otitis media (after S. pneumoniae and H. influenzae). Common cause of COPD exacerbations. Almost all strains produce beta-lactamase."},
+{name:"Haemophilus influenzae",type:"Gram- Coccobacilli",gram:"negative",morphology:"Coccobacilli (pleomorphic)",diseases:["Meningitis (children, pre-vaccine)","Epiglottitis (type b)","Otitis media","Pneumonia","Sinusitis"],virulence:["Polyribitol phosphate capsule (type b)","IgA protease","LPS"],lab:"Requires Factors V (NAD) and X (hemin) for growth, Chocolate agar (NOT blood agar), Satellitism around S. aureus",treatment:"Ceftriaxone (meningitis); Amoxicillin-clavulanate (otitis); Rifampin prophylaxis",notes:"Type b (Hib) causes invasive disease. Hib vaccine dramatically reduced meningitis. Needs factors V (NAD) and X (hemin) = chocolate agar. Satellitism = grows near Staph colonies."},
+{name:"Bordetella pertussis",type:"Gram- Coccobacilli",gram:"negative",morphology:"Coccobacilli",diseases:["Whooping cough (pertussis) - catarrhal, paroxysmal, convalescent stages"],virulence:["Pertussis toxin (PT - ADP-ribosylates Gi protein, increases cAMP)","Filamentous hemagglutinin (FHA)","Tracheal cytotoxin","Adenylate cyclase toxin"],lab:"Bordet-Gengou agar (potato-glycerol-blood) or Regan-Lowe agar, PCR preferred",treatment:"Macrolides (Azithromycin/Erythromycin); DTaP/Tdap vaccine",notes:"3 stages: Catarrhal (most contagious, URI-like), Paroxysmal (whooping cough, post-tussive vomiting), Convalescent. Pertussis toxin disables Gi = increased cAMP. Lymphocytosis on CBC."},
+
+// ── GRAM-NEGATIVE RODS (ENTERICS) ──
+{name:"Escherichia coli",type:"Gram- Rods",gram:"negative",morphology:"Rods",diseases:["UTI (#1 cause)","Neonatal meningitis (K1 capsule)","Traveler's diarrhea (ETEC)","Bloody diarrhea/HUS (EHEC O157:H7)","Sepsis/bacteremia"],virulence:["LPS (endotoxin)","Type 1 pili (UTI)","P pili (pyelonephritis)","K1 capsule","Shiga-like toxin (EHEC)","Heat-labile/stable toxins (ETEC)"],lab:"Lactose fermenter, Indole +, Green metallic sheen on EMB agar, Pink on MacConkey",treatment:"TMP-SMX or fluoroquinolones (UTI); Supportive for EHEC (NO antibiotics - risk of HUS)",notes:"Pathotypes: ETEC (traveler's), EHEC/STEC (O157:H7, HUS), EPEC (infant diarrhea), EIEC (dysentery-like), EAEC. EMB = Eosin Methylene Blue."},
+{name:"Klebsiella pneumoniae",type:"Gram- Rods",gram:"negative",morphology:"Rods (encapsulated, mucoid)",diseases:["Pneumonia (aspiration, nosocomial)","UTI","Liver abscess","Sepsis"],virulence:["Large mucoid capsule","LPS","Urease"],lab:"Lactose fermenter, Mucoid colonies (string test +), Currant-jelly sputum, Pink on MacConkey",treatment:"3rd-gen Cephalosporins; Carbapenems for ESBL; Watch for CRE (carbapenem-resistant)",notes:"Current-jelly sputum. Common in alcoholics and diabetics. Large capsule gives mucoid appearance. Increasing ESBL and carbapenem resistance (CRE/KPC)."},
+{name:"Serratia marcescens",type:"Gram- Rods",gram:"negative",morphology:"Rods",diseases:["Nosocomial pneumonia","UTI","Wound infections","Endocarditis (IVDU)"],virulence:["Red pigment (prodigiosin)","Biofilm","DNase"],lab:"Slow lactose fermenter, RED PIGMENT at room temperature (25C), DNase +",treatment:"Fluoroquinolones or Carbapenems",notes:"Red pigment at room temp (not at 37C). Nosocomial pathogen. Associated with IVDU endocarditis. Part of the SPACE organisms (Serratia, Pseudomonas, Acinetobacter, Citrobacter, Enterobacter)."},
+{name:"Enterobacter cloacae",type:"Gram- Rods",gram:"negative",morphology:"Rods (motile)",diseases:["Nosocomial UTI","Nosocomial pneumonia","Bacteremia"],virulence:["AmpC beta-lactamase (inducible)","LPS"],lab:"Lactose fermenter, Motile, Pink on MacConkey",treatment:"Carbapenems (avoid 3rd-gen cephalosporins - inducible AmpC resistance)",notes:"SPACE organism. Has inducible AmpC beta-lactamase: may appear sensitive to 3rd-gen cephalosporins initially, then develops resistance during treatment."},
+{name:"Salmonella typhi",type:"Gram- Rods",gram:"negative",morphology:"Rods (flagellated)",diseases:["Typhoid fever","Rose spots","Intestinal perforation","Chronic carrier state (gallbladder)"],virulence:["Vi capsule","LPS","Type III secretion system","Flagella (H antigen)"],lab:"Non-lactose fermenter, H2S + on TSI/XLD, Motile, Widal test",treatment:"Fluoroquinolones or Ceftriaxone or Azithromycin",notes:"Typhoid: stepwise fever, rose spots on abdomen, relative bradycardia, hepatosplenomegaly. Chronic carriers (gallbladder) - Typhoid Mary. Fecal-oral transmission."},
+{name:"Salmonella enteritidis",type:"Gram- Rods",gram:"negative",morphology:"Rods (flagellated)",diseases:["Gastroenteritis (non-typhoidal)","Bacteremia","Osteomyelitis in sickle cell disease"],virulence:["LPS","Type III secretion system","Flagella"],lab:"Non-lactose fermenter, H2S +, Motile, Grows on Hektoen/XLD agar",treatment:"Usually self-limiting; Fluoroquinolones if severe",notes:"From poultry, eggs, reptiles/turtles. Osteomyelitis in sickle cell patients (Salmonella > S. aureus). Does NOT produce as severe disease as S. typhi."},
+{name:"Shigella dysenteriae",type:"Gram- Rods",gram:"negative",morphology:"Rods (non-motile)",diseases:["Bacillary dysentery (bloody diarrhea with mucus)","HUS (Shiga toxin)"],virulence:["Shiga toxin (inactivates 60S ribosomal subunit)","Type III secretion system","Very low infectious dose (10-200 organisms)"],lab:"Non-lactose fermenter, Non-motile, H2S -, No gas production, Green on Hektoen agar",treatment:"Fluoroquinolones or Azithromycin; Rehydration",notes:"4 species: S. dysenteriae (most severe, Shiga toxin), S. flexneri, S. boydii, S. sonnei (most common in US). Very low ID50. Invades colonic mucosa. Fecal-oral, daycare outbreaks."},
+{name:"Proteus mirabilis",type:"Gram- Rods",gram:"negative",morphology:"Rods (highly motile)",diseases:["UTI (complicated)","Staghorn calculi (struvite stones)","Wound infections"],virulence:["Urease (alkalinizes urine, struvite stones)","Swarming motility","LPS"],lab:"Non-lactose fermenter, Urease +, SWARMING motility on blood agar, H2S +",treatment:"TMP-SMX or Fluoroquinolones (intrinsically resistant to Nitrofurantoin)",notes:"Urease splits urea to ammonia = alkaline urine = struvite (magnesium ammonium phosphate) staghorn calculi. Swarming on agar is classic. Ammonia smell."},
+{name:"Yersinia enterocolitica",type:"Gram- Rods",gram:"negative",morphology:"Rods",diseases:["Enterocolitis (mimics appendicitis)","Mesenteric lymphadenitis","Reactive arthritis"],virulence:["Invasins","Heat-stable enterotoxin","Type III secretion"],lab:"Non-lactose fermenter, Cold enrichment (grows at 4C), Grows on CIN agar",treatment:"Usually self-limiting; Fluoroquinolones or TMP-SMX if severe",notes:"Transmitted by contaminated pork, puppy feces, unpasteurized milk. Mimics appendicitis (RLQ pain + mesenteric adenitis). Grows in cold (contaminated blood transfusions)."},
+{name:"Pseudomonas aeruginosa",type:"Gram- Rods",gram:"negative",morphology:"Rods",diseases:["Pneumonia (CF, ventilator)","Burn wound infections","Otitis externa (swimmer's ear)","UTI (catheter)","Hot tub folliculitis","Ecthyma gangrenosum","Malignant otitis externa (diabetics)"],virulence:["Exotoxin A (inactivates EF-2, like diphtheria)","Elastase","Phospholipase C","Pyocyanin (blue-green)","Pyoverdine","Biofilm","LPS","Alginate (mucoid in CF)"],lab:"Oxidase +, Non-lactose fermenter, BLUE-GREEN pigment (pyocyanin), Fruity/grape-like odor, Grows at 42C",treatment:"Anti-pseudomonal: Piperacillin-tazobactam, Cefepime, Ceftazidime, Meropenem +/- Aminoglycoside or Ciprofloxacin",notes:"Obligate aerobe. Intrinsically resistant to many antibiotics. Exotoxin A mechanism same as diphtheria toxin. Mucoid colonies in CF patients (alginate)."},
+{name:"Vibrio cholerae",type:"Gram- Rods",gram:"negative",morphology:"Comma-shaped rods",diseases:["Cholera (rice-water stools)","Severe watery diarrhea","Dehydration"],virulence:["Cholera toxin (AB toxin - ADP-ribosylates Gs, permanently activates adenylate cyclase, increases cAMP)","Pili","Mucinase"],lab:"Oxidase +, Comma-shaped, TCBS agar (yellow colonies), Grows in alkaline media",treatment:"Oral rehydration therapy (ORT); Doxycycline or Azithromycin for severe cases",notes:"Cholera toxin: ADP-ribosylates Gs protein = permanent cAMP activation = massive Cl-/H2O secretion. Rice-water stools. Contaminated water. O1 and O139 serotypes cause epidemics."},
+{name:"Campylobacter jejuni",type:"Gram- Rods",gram:"negative",morphology:"Comma/S-shaped, gull-wing",diseases:["Bacterial gastroenteritis (#1 cause in developed countries)","Bloody diarrhea","Guillain-Barre syndrome (post-infectious)","Reactive arthritis"],virulence:["Cytolethal distending toxin","Flagella","LOS (molecular mimicry - Guillain-Barre)"],lab:"Oxidase +, Grows at 42C (thermophilic), Skirrow or Campy-BAP media, Microaerophilic, S-shaped/gull-wing on Gram stain",treatment:"Usually self-limiting; Azithromycin if severe (Fluoroquinolone resistance increasing)",notes:"#1 cause of bacterial diarrhea in US. From undercooked poultry, unpasteurized milk. Associated with Guillain-Barre (ascending paralysis) via molecular mimicry of gangliosides."},
+{name:"Helicobacter pylori",type:"Gram- Rods",gram:"negative",morphology:"Spiral/curved rods",diseases:["Chronic gastritis","Peptic ulcer disease (duodenal > gastric)","Gastric adenocarcinoma","MALT lymphoma"],virulence:["Urease (neutralizes stomach acid)","CagA (cytotoxin)","VacA (vacuolating toxin)","Flagella","Mucinase"],lab:"Urease + (rapid urease test/CLO test), Urea breath test, Stool antigen test, Histology with Warthin-Starry silver stain",treatment:"Triple therapy: PPI + Clarithromycin + Amoxicillin (or Metronidazole); Quadruple: PPI + Bismuth + Metronidazole + Tetracycline",notes:"Lives in gastric mucus layer. Urease produces ammonia (alkaline microenvironment). Associated with duodenal ulcers > gastric ulcers. Type I carcinogen (gastric cancer, MALT lymphoma)."},
+
+// ── ATYPICALS & SPIROCHETES ──
+{name:"Mycobacterium tuberculosis",type:"Acid-Fast",gram:"neither",morphology:"Rods (acid-fast)",diseases:["Pulmonary TB","Miliary TB","Pott disease (spinal TB)","TB meningitis","Renal TB"],virulence:["Mycolic acid/cord factor (trehalose dimycolate)","Sulfatides (inhibit phagolysosome fusion)","LAM"],lab:"Acid-fast (Ziehl-Neelsen) bright red, Lowenstein-Jensen agar (slow grower, weeks), Auramine-rhodamine fluorescent stain, PPD/IGRA screening",treatment:"RIPE x 2 months, then RI x 4 months: Rifampin, Isoniazid, Pyrazinamide, Ethambutol",notes:"Leading infectious killer worldwide. Caseating granulomas. Ghon focus (primary TB) / Ghon complex (+ hilar lymph nodes). PPD/Mantoux test. RIPE side effects: Rifampin (red fluids), INH (hepatitis, peripheral neuropathy - give B6), Pyrazinamide (hyperuricemia), Ethambutol (optic neuritis)."},
+{name:"Mycobacterium leprae",type:"Acid-Fast",gram:"neither",morphology:"Rods (acid-fast, cannot be cultured)",diseases:["Leprosy/Hansen disease - Tuberculoid (few lesions, strong Th1) and Lepromatous (many lesions, weak immune response)"],virulence:["Preference for cool body temperatures","Infects Schwann cells"],lab:"Cannot be grown in culture, Grows in armadillo footpads, Acid-fast stain of skin biopsy, Fite stain",treatment:"Dapsone + Rifampin (tuberculoid); + Clofazimine (lepromatous)",notes:"Affects cool body parts: skin, superficial nerves, nose, ears. Tuberculoid (paucibacillary): few lesions, strong cell-mediated immunity. Lepromatous (multibacillary): diffuse disease, weak CMI, leonine facies. Armadillos are reservoir."},
+{name:"Mycoplasma pneumoniae",type:"Atypical",gram:"neither",morphology:"No cell wall (pleomorphic)",diseases:["Walking pneumonia (atypical)","Tracheobronchitis","Bullous myringitis (ear)"],virulence:["P1 adhesin protein","Hydrogen peroxide production","No cell wall (no peptidoglycan)"],lab:"No Gram stain (no cell wall), Eaton agar (takes weeks), Cold agglutinins (IgM that agglutinate RBCs at 4C), PCR preferred, Fried-egg colonies",treatment:"Macrolides (Azithromycin) or Doxycycline or Fluoroquinolones (NOT beta-lactams - no cell wall)",notes:"Most common atypical pneumonia. NO cell wall = no Gram stain, resistant to beta-lactams. Walking pneumonia in young adults. Cold agglutinins (IgM). X-ray worse than clinical exam."},
+{name:"Chlamydia trachomatis",type:"Atypical",gram:"neither",morphology:"Obligate intracellular (elementary/reticulate bodies)",diseases:["Urogenital chlamydia (most common bacterial STI)","Lymphogranuloma venereum (L1-L3)","Trachoma (leading infectious cause of blindness)","Neonatal conjunctivitis/pneumonia","Reactive arthritis"],virulence:["Elementary body (EB, infectious, extracellular)","Reticulate body (RB, replicates intracellularly)","Type III secretion"],lab:"Cannot grow on standard media, McCoy cell culture with iodine-staining inclusions, NAAT (PCR) preferred, Giemsa stain shows inclusions",treatment:"Azithromycin (single dose) or Doxycycline (7 days); Erythromycin for neonates",notes:"Obligate intracellular. EB = small, dense, infectious (Elementary = Enters cell). RB = larger, replicates (Reticulate = Replicates). Serotypes A-C: trachoma. D-K: urogenital/neonatal. L1-L3: LGV. Screen sexually active women <25."},
+{name:"Treponema pallidum",type:"Spirochete",gram:"neither",morphology:"Spirochete (thin, tightly coiled)",diseases:["Syphilis - Primary (chancre), Secondary (rash, condylomata lata), Latent, Tertiary (gummas, tabes dorsalis, aortitis)","Congenital syphilis"],virulence:["Outer membrane proteins","Hyaluronidase","Immune evasion (poor antigenicity)"],lab:"Cannot be cultured, Dark-field microscopy, Non-treponemal tests: VDRL/RPR (screening, follow treatment), Treponemal tests: FTA-ABS (confirmatory)",treatment:"Penicillin G (all stages); Doxycycline if penicillin allergy; Jarisch-Herxheimer reaction possible",notes:"Primary: painless chancre. Secondary: diffuse maculopapular rash (palms/soles), condylomata lata, flu-like. Tertiary: gummas, cardiovascular (aortitis), neurosyphilis (tabes dorsalis, Argyll Robertson pupils). Congenital: Hutchinson teeth, saddle nose, saber shins."},
+{name:"Borrelia burgdorferi",type:"Spirochete",gram:"neither",morphology:"Spirochete (large, loosely coiled)",diseases:["Lyme disease - Stage 1 (erythema migrans), Stage 2 (carditis, Bell palsy), Stage 3 (arthritis, encephalopathy)"],virulence:["OspA, OspB, OspC surface proteins","Immune evasion via antigenic variation"],lab:"ELISA screening + Western blot confirmation, Blood smear (rarely seen), Barbour-Stoenner-Kelly (BSK) medium",treatment:"Doxycycline (early); Ceftriaxone (late/neuro); Amoxicillin for children/pregnant",notes:"Ixodes tick vector (deer tick). Stage 1: erythema migrans (bull's-eye rash). Stage 2: heart block, facial nerve (Bell) palsy. Stage 3: migratory arthritis (large joints). Northeast/Midwest US. White-footed mouse reservoir."},
+{name:"Leptospira interrogans",type:"Spirochete",gram:"neither",morphology:"Spirochete (question-mark shaped, hooked ends)",diseases:["Leptospirosis","Weil disease (severe: jaundice, renal failure, hemorrhage)"],virulence:["LPS","Motility (penetrates mucous membranes)"],lab:"Dark-field microscopy, Fletcher/EMJH medium, Serology (MAT - microscopic agglutination test)",treatment:"Penicillin or Doxycycline; Doxycycline for prophylaxis",notes:"Question-mark shape with hooked ends. Transmitted through contact with animal urine (rats, dogs) in contaminated water. Weil disease = severe form with jaundice + renal failure + hemorrhage. Occupational: farmers, sewage workers."},
+
+// ── FUNGI & PARASITES ──
+{name:"Candida albicans",type:"Fungi",gram:"N/A",morphology:"Yeast with pseudohyphae and true hyphae",diseases:["Oral thrush","Vulvovaginal candidiasis","Esophageal candidiasis (AIDS-defining)","Candidemia","Diaper rash","Chronic mucocutaneous candidiasis"],virulence:["Adhesins","Biofilm formation","Phenotypic switching","Secreted aspartyl proteases","Hyphae formation (tissue invasion)"],lab:"Germ tube + (distinguishes from other Candida), Sabouraud agar, Chlamydospores on cornmeal agar, KOH prep shows pseudohyphae",treatment:"Fluconazole (mucosal); Echinocandins (Caspofungin) or Amphotericin B (systemic/resistant)",notes:"Most common fungal infection. Germ tube test is key identifier. Oral thrush: white scrape-off patches. Esophageal candidiasis = AIDS-defining illness (CD4 <100). Dimorphic (yeast to hyphae at 37C)."},
+{name:"Pneumocystis jirovecii",type:"Fungi",gram:"N/A",morphology:"Atypical fungus (cyst form)",diseases:["Pneumocystis pneumonia (PCP/PJP) - AIDS-defining illness"],virulence:["Major surface glycoprotein","Immune evasion in CD4-depleted hosts"],lab:"GMS (Gomori methenamine silver) stain shows cysts, Wright-Giemsa for trophozoites, Disc-shaped cysts on silver stain, Bronchoalveolar lavage (BAL), Cannot be cultured",treatment:"TMP-SMX (treatment and prophylaxis); Pentamidine alternative; Add steroids if PaO2 <70",notes:"AIDS-defining illness (CD4 <200). Bilateral diffuse ground-glass infiltrates on CXR. Prophylaxis with TMP-SMX when CD4 <200. Silver stain shows crushed ping-pong ball cysts."},
+{name:"Giardia lamblia",type:"Parasite",gram:"N/A",morphology:"Flagellated protozoan (pear-shaped trophozoite)",diseases:["Giardiasis (foul-smelling fatty diarrhea)","Malabsorption","Steatorrhea"],virulence:["Ventral sucking disc (attachment to duodenum)","Variant surface proteins","Cyst form (environmental resistance)"],lab:"Stool O&P (ova and parasites): pear-shaped trophozoite with 2 nuclei (owl face), Stool antigen test, Cysts in formed stool",treatment:"Metronidazole or Tinidazole; Nitazoxanide alternative",notes:"Most common intestinal parasite in US. Fecal-oral via contaminated water (campers, daycare, beavers). Foul-smelling fatty stools (malabsorption). Owl face/monkey face trophozoite. Cysts survive in chlorinated water."},
+{name:"Trichomonas vaginalis",type:"Parasite",gram:"N/A",morphology:"Flagellated protozoan (pear-shaped, 4 flagella + undulating membrane)",diseases:["Trichomoniasis (vaginitis)","Strawberry cervix","Urethritis (men)"],virulence:["Adhesins","Cysteine proteases","No cyst form (trophozoite only)"],lab:"Wet mount: motile, pear-shaped trophozoites with jerky motility, Green-yellow frothy discharge, pH >4.5, NAAT preferred",treatment:"Metronidazole or Tinidazole (treat both partners); Avoid alcohol (disulfiram-like reaction)",notes:"STI. Strawberry cervix (punctate hemorrhages). Green-yellow frothy malodorous discharge. No cyst form = fragile, direct transmission only. Most common non-viral STI worldwide."},
+{name:"Enterobius vermicularis",type:"Parasite",gram:"N/A",morphology:"Pinworm (small white nematode)",diseases:["Enterobiasis (pinworm infection)","Perianal pruritus (especially at night)"],virulence:["Female migrates to perianus at night to deposit eggs"],lab:"Scotch tape test (Graham test) - apply tape to perianal area in morning, examine for eggs. NOT found reliably in stool",treatment:"Mebendazole or Albendazole (treat whole household); Pyrantel pamoate alternative",notes:"Most common helminth in US. Perianal itching at night. Fecal-oral / autoinfection (hand-to-mouth). Scotch tape test in morning. Treat entire household to prevent reinfection."}
 ];
 
-const aminoAcids = [
-  {name:"Glycine",three:"Gly",one:"G",type:"Nonpolar",feature:"Smallest AA; fits tight spaces (collagen)"},
-  {name:"Alanine",three:"Ala",one:"A",type:"Nonpolar",feature:"Simple hydrophobic side chain"},
-  {name:"Valine",three:"Val",one:"V",type:"Nonpolar",feature:"Branched-chain AA (BCAA); essential"},
-  {name:"Leucine",three:"Leu",one:"L",type:"Nonpolar",feature:"BCAA; most abundant in proteins; essential"},
-  {name:"Isoleucine",three:"Ile",one:"I",type:"Nonpolar",feature:"BCAA; essential"},
-  {name:"Proline",three:"Pro",one:"P",type:"Nonpolar",feature:"Cyclic; causes kinks in protein chains"},
-  {name:"Phenylalanine",three:"Phe",one:"F",type:"Nonpolar",feature:"Aromatic; precursor to Tyr; essential. Accumulates in PKU"},
-  {name:"Tryptophan",three:"Trp",one:"W",type:"Nonpolar",feature:"Largest AA; precursor to serotonin/melatonin/niacin; essential"},
-  {name:"Methionine",three:"Met",one:"M",type:"Nonpolar",feature:"Start codon (AUG); methyl donor as SAM; essential"},
-  {name:"Cysteine",three:"Cys",one:"C",type:"Polar",feature:"Thiol group forms disulfide bonds"},
-  {name:"Serine",three:"Ser",one:"S",type:"Polar",feature:"Phosphorylation site; active site of serine proteases"},
-  {name:"Threonine",three:"Thr",one:"T",type:"Polar",feature:"Phosphorylation site; essential"},
-  {name:"Tyrosine",three:"Tyr",one:"Y",type:"Polar",feature:"Phosphorylation site; precursor to dopamine, thyroid hormones, melanin"},
-  {name:"Asparagine",three:"Asn",one:"N",type:"Polar",feature:"N-linked glycosylation site"},
-  {name:"Glutamine",three:"Gln",one:"Q",type:"Polar",feature:"Nitrogen carrier; most abundant AA in blood"},
-  {name:"Aspartate",three:"Asp",one:"D",type:"Negative",feature:"Acidic; important in urea cycle"},
-  {name:"Glutamate",three:"Glu",one:"E",type:"Negative",feature:"Acidic; major excitatory neurotransmitter; flavor (umami)"},
-  {name:"Lysine",three:"Lys",one:"K",type:"Positive",feature:"Basic; important for collagen cross-linking; essential"},
-  {name:"Arginine",three:"Arg",one:"R",type:"Positive",feature:"Most basic AA; substrate for NO synthase; essential in children"},
-  {name:"Histidine",three:"His",one:"H",type:"Positive",feature:"Imidazole ring; buffering at physiological pH; essential"}
+// ══════════════════════════════════════
+// DATA: LAB STAINS
+// ══════════════════════════════════════
+const labStains=[
+{name:"Gram Stain",steps:["Crystal violet (1 min)","Iodine mordant (1 min)","Alcohol/acetone decolorizer (10-30s)","Safranin counterstain (1 min)"],result:"Gram+ = purple/blue (thick peptidoglycan retains crystal violet). Gram\u2212 = pink/red (thin PG, outer LPS membrane, decolorized then counterstained).",tip:"Decolorization = MOST CRITICAL step. Over-decolorize \u2192 false Gram\u2212. Under-decolorize \u2192 false Gram+. Use fresh cultures (<24hr)."},
+{name:"Acid-Fast (Ziehl-Neelsen)",steps:["Carbol fuchsin + HEAT (5 min)","Acid-alcohol decolorize","Methylene blue counterstain (1-2 min)"],result:"AFB+ = bright red/pink (mycolic acid retains carbol fuchsin). AFB\u2212 = blue.",tip:"For Mycobacterium (TB, leprosy) and Nocardia. Kinyoun = cold method (no heat, higher carbol fuchsin concentration). Auramine-rhodamine = fluorescent method."},
+{name:"Endospore Stain (Schaeffer-Fulton)",steps:["Malachite green + STEAM (5 min)","Water rinse (washes vegetative cells)","Safranin counterstain (1 min)"],result:"Spores = GREEN (malachite green penetrates with heat). Vegetative cells = PINK/RED (safranin).",tip:"Bacillus (aerobic) and Clostridium (anaerobic) form spores. Resistant to heat, chemicals, desiccation, radiation, UV."},
+{name:"Capsule Stain (India Ink / Nigrosin)",steps:["Mix bacteria with India ink on slide","Air dry \u2014 do NOT heat fix","Observe under microscope"],result:"Clear HALO around organism = capsule. Dark background (negative stain).",tip:"Classic for Cryptococcus neoformans (meningitis in HIV/AIDS, bird droppings). Also S. pneumoniae (Quellung = capsule swelling with antisera)."},
+{name:"Giemsa Stain",steps:["Prepare thin/thick blood smear","Fix with methanol","Stain with Giemsa solution (30-45 min)","Rinse with buffered water"],result:"RBCs = pink. WBC nuclei = dark purple. Parasites stain various colors.",tip:"Gold standard for blood parasites: Plasmodium (malaria), Babesia, Trypanosoma, Leishmania. Also: Chlamydia inclusions, Borrelia, Rickettsia."},
+{name:"PAS Stain (Periodic Acid-Schiff)",steps:["Periodic acid oxidation","Schiff reagent application (15 min)","Rinse and counterstain"],result:"Glycogen/polysaccharides/mucin = bright MAGENTA/PINK.",tip:"Whipple disease (Tropheryma whipplei): PAS+ macrophages in intestinal lamina propria. Also fungal cell walls, basement membranes, glycogen storage diseases."},
+{name:"Silver Stain (Warthin-Starry / GMS)",steps:["Sensitize tissue section","Silver nitrate impregnation","Develop until organisms visible"],result:"Organisms = BLACK/DARK BROWN against yellow-green background.",tip:"Warthin-Starry: Helicobacter pylori, Bartonella, Legionella, Treponema. GMS (Gomori methenamine silver): fungi, especially Pneumocystis jirovecii (crushed ping-pong ball cysts)."}
 ];
 
-const nucleicData = {
-  dna:[
-    {title:"Structure",info:"Double-stranded helix. Sugar: Deoxyribose. Bases: A, T, G, C. Anti-parallel strands (5'→3' and 3'→5'). A=T (2 H-bonds), G≡C (3 H-bonds)."},
-    {title:"Replication",info:"Semi-conservative. Helicase unwinds, SSB stabilizes, Primase lays RNA primer, DNA Pol III extends (5'→3'), DNA Pol I replaces primers, Ligase seals nicks. Leading strand = continuous, Lagging strand = Okazaki fragments."},
-    {title:"Forms",info:"B-DNA: most common, right-handed. A-DNA: right-handed, dehydrated. Z-DNA: left-handed, zigzag backbone."},
-    {title:"Damage & Repair",info:"Mismatch repair: fixes replication errors. Base excision repair (BER): removes single damaged bases. Nucleotide excision repair (NER): removes bulky lesions/thymine dimers (defective in Xeroderma Pigmentosum)."}
-  ],
-  rna:[
-    {title:"Types of RNA",info:"mRNA: carries code from DNA to ribosome. tRNA: carries amino acids, has anticodon. rRNA: structural/catalytic component of ribosomes. snRNA: splicing. miRNA/siRNA: gene regulation."},
-    {title:"Transcription",info:"RNA Polymerase reads template 3'→5', synthesizes mRNA 5'→3'. Prokaryotes: single RNA Pol, no processing. Eukaryotes: RNA Pol II for mRNA. Promoters: TATA box (eukaryotes), Pribnow box (prokaryotes)."},
-    {title:"mRNA Processing (Eukaryotes)",info:"5' cap (7-methylguanosine) — protects from degradation, aids ribosome binding. Poly-A tail (3') — protects, aids export. Splicing — introns removed by spliceosome (snRNPs). Exons are expressed."},
-    {title:"Translation",info:"Initiation: small subunit + mRNA + initiator tRNA (AUG = Met). Elongation: aminoacyl-tRNA enters A site, peptide bond, translocation. Termination: stop codon (UAA, UAG, UGA) → release factor."}
-  ],
-  compare:[
-    {feature:"Sugar",dna:"Deoxyribose",rna:"Ribose"},
-    {feature:"Bases",dna:"A, T, G, C",rna:"A, U, G, C"},
-    {feature:"Strands",dna:"Double-stranded",rna:"Usually single-stranded"},
-    {feature:"Location",dna:"Nucleus (mainly)",rna:"Nucleus and cytoplasm"},
-    {feature:"Function",dna:"Stores genetic information",rna:"Transfers and expresses genetic info"},
-    {feature:"Stability",dna:"Very stable",rna:"Less stable (OH on 2' carbon)"},
-    {feature:"Replication",dna:"Self-replicating",rna:"Transcribed from DNA"}
-  ]
+// ══════════════════════════════════════
+// DATA: AMINO ACIDS
+// ══════════════════════════════════════
+const aminoAcids=[
+{name:"Glycine",three:"Gly",one:"G",type:"Nonpolar",feature:"Smallest AA; fits tight spaces (collagen every 3rd residue)"},
+{name:"Alanine",three:"Ala",one:"A",type:"Nonpolar",feature:"Simple hydrophobic side chain; common in alpha-helices"},
+{name:"Valine",three:"Val",one:"V",type:"Nonpolar",feature:"Branched-chain AA (BCAA); essential"},
+{name:"Leucine",three:"Leu",one:"L",type:"Nonpolar",feature:"BCAA; most abundant AA in proteins; essential"},
+{name:"Isoleucine",three:"Ile",one:"I",type:"Nonpolar",feature:"BCAA; essential"},
+{name:"Proline",three:"Pro",one:"P",type:"Nonpolar",feature:"Cyclic (imino acid); causes kinks/bends in proteins; helix breaker"},
+{name:"Phenylalanine",three:"Phe",one:"F",type:"Nonpolar",feature:"Aromatic; precursor to Tyr; essential. Accumulates in PKU"},
+{name:"Tryptophan",three:"Trp",one:"W",type:"Nonpolar",feature:"Largest AA; precursor to serotonin/melatonin/niacin (B3); essential"},
+{name:"Methionine",three:"Met",one:"M",type:"Nonpolar",feature:"START codon (AUG); methyl donor as SAM; essential"},
+{name:"Cysteine",three:"Cys",one:"C",type:"Polar",feature:"Thiol (-SH) group forms disulfide bonds (stabilize tertiary structure)"},
+{name:"Serine",three:"Ser",one:"S",type:"Polar",feature:"Phosphorylation site; active site of serine proteases"},
+{name:"Threonine",three:"Thr",one:"T",type:"Polar",feature:"Phosphorylation site; essential"},
+{name:"Tyrosine",three:"Tyr",one:"Y",type:"Polar",feature:"Phosphorylation site; precursor to dopamine, T3/T4, melanin, catecholamines"},
+{name:"Asparagine",three:"Asn",one:"N",type:"Polar",feature:"N-linked glycosylation site; amide of aspartate"},
+{name:"Glutamine",three:"Gln",one:"Q",type:"Polar",feature:"Nitrogen carrier/donor; most abundant AA in blood"},
+{name:"Aspartate",three:"Asp",one:"D",type:"Negative",feature:"Acidic (negatively charged at pH 7); important in urea cycle & malate-aspartate shuttle"},
+{name:"Glutamate",three:"Glu",one:"E",type:"Negative",feature:"Acidic; major excitatory CNS neurotransmitter; umami taste; precursor to GABA"},
+{name:"Lysine",three:"Lys",one:"K",type:"Positive",feature:"Basic; collagen cross-linking (hydroxylysine); essential; acetylation site on histones"},
+{name:"Arginine",three:"Arg",one:"R",type:"Positive",feature:"Most basic AA; substrate for NO synthase; essential in children; urea cycle"},
+{name:"Histidine",three:"His",one:"H",type:"Positive",feature:"Imidazole ring; buffering at physiological pH (~6.0 pKa); essential; found in hemoglobin"}
+];
+
+// ══════════════════════════════════════
+// DATA: NUCLEIC ACIDS
+// ══════════════════════════════════════
+const nucleicData={
+dna:[
+{title:"Structure",info:"Double-stranded helix. Sugar: Deoxyribose. Bases: A, T, G, C. Anti-parallel strands (5'\u21923' and 3'\u21925'). A=T (2 H-bonds), G\u2261C (3 H-bonds). Major & minor grooves for protein binding."},
+{title:"Replication",info:"Semi-conservative (Meselson-Stahl). Origin of replication \u2192 Helicase unwinds, SSB stabilizes, Topoisomerase relieves tension, Primase lays RNA primer, DNA Pol III extends (5'\u21923'), DNA Pol I replaces primers (5'\u21923' exonuclease), Ligase seals nicks. Leading = continuous, Lagging = Okazaki fragments."},
+{title:"Forms",info:"B-DNA: most common, right-handed, 10.5 bp/turn. A-DNA: right-handed, dehydrated, wider. Z-DNA: left-handed, zigzag backbone, longer/thinner."},
+{title:"Damage & Repair",info:"Mismatch repair: fixes replication errors (Lynch syndrome if defective). Base excision repair (BER): removes single damaged bases (glycosylase). Nucleotide excision repair (NER): removes bulky lesions/thymine dimers (defective in Xeroderma Pigmentosum). Double-strand break: homologous recombination or NHEJ (defective in BRCA1/2)."}
+],
+rna:[
+{title:"Types of RNA",info:"mRNA: carries genetic code to ribosome. tRNA: carries amino acids (anticodon loop, CCA 3' acceptor). rRNA: structural/catalytic (peptidyl transferase = ribozyme). snRNA: mRNA splicing (spliceosome). miRNA/siRNA: gene silencing (RISC complex)."},
+{title:"Transcription",info:"RNA Pol reads template 3'\u21925', synthesizes 5'\u21923'. Prokaryotes: single RNA Pol, sigma factor for promoter recognition, rho-dependent/independent termination. Eukaryotes: RNA Pol I (rRNA), Pol II (mRNA), Pol III (tRNA, 5S rRNA). Promoters: TATA box (eukaryotes, -25), Pribnow box (prokaryotes, -10)."},
+{title:"mRNA Processing (Eukaryotes)",info:"5' cap (7-methylguanosine) \u2014 protects from exonucleases, aids ribosome recognition. 3' Poly-A tail (poly-A polymerase) \u2014 protects, aids nuclear export. Splicing \u2014 introns removed by spliceosome (snRNPs, U1-U6). Exons are Expressed. Alternative splicing = 1 gene \u2192 multiple proteins."},
+{title:"Translation",info:"Initiation: small ribosomal subunit + mRNA + initiator tRNA (AUG = Met/fMet). Elongation: aminoacyl-tRNA enters A site, peptide bond formed (peptidyl transferase), translocation (EF-G/EF-2, uses GTP). Termination: stop codon (UAA, UAG, UGA) \u2192 release factor. Wobble: 3rd position of codon can mismatch."}
+],
+compare:[
+{feature:"Sugar",dna:"Deoxyribose (no 2' OH)",rna:"Ribose (2' OH present)"},
+{feature:"Bases",dna:"A, T, G, C",rna:"A, U, G, C (Uracil replaces Thymine)"},
+{feature:"Strands",dna:"Double-stranded",rna:"Usually single-stranded"},
+{feature:"Location",dna:"Nucleus (mainly), mitochondria",rna:"Nucleus, cytoplasm, ribosomes"},
+{feature:"Function",dna:"Stores genetic information",rna:"Transfers/expresses genetic info"},
+{feature:"Stability",dna:"Very stable (no 2' OH)",rna:"Less stable (2' OH susceptible to hydrolysis)"},
+{feature:"Replication",dna:"Self-replicating (DNA Pol)",rna:"Transcribed from DNA (RNA Pol)"}
+]
 };
 
-// ── LAB STAINS DATA ──
-const labStains=[
-  {name:"Gram Stain",steps:["Crystal violet (1 min)","Iodine mordant (1 min)","Alcohol/acetone decolorizer (10-30s)","Safranin counterstain (1 min)"],result:"Gram+ = purple/blue (thick peptidoglycan). Gram\u2212 = pink/red (thin PG, outer LPS membrane).",tip:"Decolorization = MOST CRITICAL step. Over-decolorize \u2192 false Gram\u2212. Under \u2192 false Gram+. Use fresh cultures."},
-  {name:"Acid-Fast (Ziehl-Neelsen)",steps:["Carbol fuchsin + HEAT (5 min)","Acid-alcohol decolorize","Methylene blue counterstain (1-2 min)"],result:"AFB+ = bright red/pink (mycolic acid retains). AFB\u2212 = blue.",tip:"For Mycobacterium (TB, leprosy) and Nocardia. Kinyoun = cold method (no heat, higher concentration)."},
-  {name:"Endospore Stain (Schaeffer-Fulton)",steps:["Malachite green + STEAM (5 min)","Water rinse (washes veg cells)","Safranin counterstain (1 min)"],result:"Spores = GREEN. Vegetative cells = PINK/RED.",tip:"Bacillus (aerobic) and Clostridium (anaerobic) spores. Resistant to heat, chemicals, desiccation, radiation."},
-  {name:"Capsule Stain (India Ink)",steps:["Mix bacteria with India ink","Air dry \u2014 do NOT heat fix","Observe under microscope"],result:"Clear HALO = capsule. Dark background.",tip:"Negative stain. Classic for Cryptococcus neoformans (meningitis in HIV). Also S. pneumoniae."},
-  {name:"Giemsa Stain",steps:["Prepare blood smear","Fix with methanol","Stain with Giemsa (30-45 min)","Rinse with buffered water"],result:"RBCs = pink. WBC nuclei = purple. Parasites = various.",tip:"Gold standard for blood parasites: Plasmodium, Babesia, Trypanosoma, Leishmania. Also Chlamydia inclusions."},
-  {name:"PAS Stain (Periodic Acid-Schiff)",steps:["Periodic acid oxidation","Schiff reagent (15 min)","Rinse and counterstain"],result:"Glycogen/polysaccharides = MAGENTA/PINK.",tip:"Whipple's disease (PAS+ macrophages in intestinal LP). Also stains fungal walls and basement membranes."},
-  {name:"Silver Stain (Warthin-Starry / GMS)",steps:["Sensitize tissue","Silver impregnation","Develop until visible"],result:"Organisms = BLACK/DARK BROWN on yellow-green background.",tip:"Warthin-Starry: Helicobacter, Bartonella, Legionella. GMS: fungi (Pneumocystis jirovecii in HIV)."}
+// ══════════════════════════════════════
+// DATA: MEDIA GUIDE
+// ══════════════════════════════════════
+const mediaGuide=[
+{name:"Mannitol Salt Agar (MSA)",purpose:"Selective & Differential for Staphylococci",selective:"7.5% NaCl inhibits most non-Staph",differential:"Mannitol fermentation",results:[{label:"Yellow (fermenter)",example:"S. aureus",color:"#fbbf24"},{label:"Pink/Red (non-fermenter)",example:"S. epidermidis, S. saprophyticus",color:"#fb7185"}]},
+{name:"MacConkey Agar (MAC)",purpose:"Selective & Differential for Gram-negatives",selective:"Bile salts + crystal violet inhibit Gram+",differential:"Lactose fermentation",results:[{label:"Pink colonies (Lactose +)",example:"E. coli, Klebsiella, Enterobacter",color:"#f472b6"},{label:"Clear/Colorless (Lactose -)",example:"Salmonella, Shigella, Proteus, Pseudomonas",color:"#e2e8f0"}]},
+{name:"EMB Agar (Eosin Methylene Blue)",purpose:"Selective & Differential for Gram-negatives",selective:"Eosin + methylene blue inhibit Gram+",differential:"Lactose fermentation",results:[{label:"Green metallic sheen",example:"E. coli (strong fermenter)",color:"#34d399"},{label:"Pink/mucoid",example:"Klebsiella, Enterobacter",color:"#f9a8d4"},{label:"Clear",example:"Salmonella, Shigella",color:"#e2e8f0"}]},
+{name:"Blood Agar (BAP)",purpose:"Differential - Hemolysis patterns",selective:"Non-selective (grows most organisms)",differential:"Hemolysis of RBCs",results:[{label:"Beta (\u03b2) - Complete clearing",example:"S. aureus, S. pyogenes (GAS), S. agalactiae (GBS), Listeria",color:"#fbbf24"},{label:"Alpha (\u03b1) - Green/partial",example:"S. pneumoniae, Viridans strep",color:"#34d399"},{label:"Gamma (\u03b3) - No hemolysis",example:"Enterococcus",color:"#94a3b8"}]},
+{name:"Chocolate Agar",purpose:"Enriched medium for fastidious organisms",selective:"Contains lysed RBCs (releases factors V & X)",differential:"Not differential",results:[{label:"Growth",example:"Haemophilus influenzae (V+X), Neisseria spp.",color:"#a78bfa"},{label:"Brown color",example:"Lysed blood gives chocolate appearance",color:"#92400e"}]},
+{name:"Thayer-Martin Agar (VCN)",purpose:"Selective for Neisseria (chocolate agar + antibiotics)",selective:"Vancomycin (kills Gram+), Colistin (kills Gram- except Neisseria), Nystatin (kills fungi)",differential:"Not differential",results:[{label:"Growth",example:"N. gonorrhoeae, N. meningitidis",color:"#e879f9"},{label:"No growth",example:"Normal flora inhibited",color:"#475569"}]},
+{name:"Hektoen Enteric / XLD Agar",purpose:"Selective & Differential for enteric pathogens",selective:"Bile salts inhibit Gram+",differential:"Lactose fermentation + H2S production",results:[{label:"Green + black center (H2S+)",example:"Salmonella",color:"#22c55e"},{label:"Green (no H2S)",example:"Shigella",color:"#4ade80"},{label:"Yellow-orange (fermenter)",example:"E. coli",color:"#fb923c"}]},
+{name:"TCBS Agar",purpose:"Selective for Vibrio species",selective:"Thiosulfate, citrate, bile salts, sucrose",differential:"Sucrose fermentation",results:[{label:"Yellow colonies",example:"V. cholerae (sucrose fermenter)",color:"#fbbf24"},{label:"Green/blue-green",example:"V. parahaemolyticus",color:"#22d3ee"}]}
 ];
 
-// ── TIMER STATE ──
+// ══════════════════════════════════════
+// DATA: CLINICAL VIGNETTES
+// ══════════════════════════════════════
+const vignettes=[
+{scenario:"A 20-year-old college student presents with sudden onset of high fever, severe headache, stiff neck, and a <span class='buzzwords'>petechial/purpuric rash</span>. CSF shows Gram-negative diplococci.",answer:"Neisseria meningitidis",explain:"Petechial rash + meningitis in college student = N. meningitidis. Kidney-bean diplococci. Can cause Waterhouse-Friderichsen syndrome (adrenal hemorrhage)."},
+{scenario:"A 3-month-old infant presents with poor feeding, constipation, weak cry, and <span class='buzzwords'>descending flaccid paralysis</span>. Mother reports feeding the baby honey.",answer:"Clostridium botulinum (infant botulism)",explain:"Honey + floppy baby + descending paralysis = infant botulism. Toxin blocks ACh release at NMJ. Do NOT give antibiotics (toxin release)."},
+{scenario:"A 25-year-old sexually active woman presents with <span class='buzzwords'>foul-smelling, green-yellow frothy vaginal discharge</span> and a strawberry cervix on exam.",answer:"Trichomonas vaginalis",explain:"Frothy green-yellow discharge + strawberry cervix = Trichomonas. Motile trophozoites on wet mount. Treat both partners with metronidazole."},
+{scenario:"A patient with AIDS (CD4 count 80) presents with progressive dyspnea. CXR shows <span class='buzzwords'>bilateral diffuse ground-glass infiltrates</span>. LDH is elevated.",answer:"Pneumocystis jirovecii (PJP)",explain:"AIDS + CD4 <200 + bilateral ground-glass opacities + elevated LDH = PJP. Diagnose with BAL + GMS silver stain. Treat: TMP-SMX + steroids if PaO2 <70."},
+{scenario:"A 5-year-old child presents with <span class='buzzwords'>perianal itching worse at night</span>. Mother notices small white worms on the child's underwear.",answer:"Enterobius vermicularis (pinworm)",explain:"Perianal pruritus at night + visible worms = pinworm. Scotch tape test in morning. Treat entire household with mebendazole/albendazole."},
+{scenario:"A hiker in Connecticut develops a <span class='buzzwords'>bull's-eye rash (erythema migrans)</span> 1 week after a camping trip, followed by facial droop and joint pain.",answer:"Borrelia burgdorferi (Lyme disease)",explain:"Bull's-eye rash + tick exposure + Bell palsy + arthritis = Lyme disease. Ixodes tick vector. Stage 1: EM. Stage 2: cardiac/neuro. Stage 3: arthritis."},
+{scenario:"A 60-year-old alcoholic presents with <span class='buzzwords'>currant-jelly sputum</span> and lobar pneumonia. Sputum culture shows mucoid, lactose-fermenting colonies.",answer:"Klebsiella pneumoniae",explain:"Alcoholic + currant-jelly sputum + mucoid colonies = Klebsiella. Encapsulated, lactose fermenter. Watch for ESBL/CRE resistance."},
+{scenario:"A child presents with a <span class='buzzwords'>barking cough with inspiratory whoop</span> that has been worsening over 2 weeks. CBC shows marked lymphocytosis.",answer:"Bordetella pertussis (whooping cough)",explain:"Whooping cough + lymphocytosis = pertussis. 3 stages: catarrhal (most contagious), paroxysmal (whoop), convalescent. Pertussis toxin increases cAMP via Gi inactivation."},
+{scenario:"A backpacker returns from Mexico with <span class='buzzwords'>watery, non-bloody diarrhea</span> for 3 days. No fever.",answer:"ETEC (Enterotoxigenic E. coli)",explain:"Traveler's diarrhea = ETEC. Heat-labile toxin (activates adenylate cyclase, like cholera) and heat-stable toxin (activates guanylate cyclase). Self-limiting."},
+{scenario:"A patient on prolonged clindamycin develops profuse <span class='buzzwords'>watery diarrhea with pseudomembranes</span> seen on colonoscopy.",answer:"Clostridioides difficile",explain:"Antibiotic use + pseudomembranous colitis = C. difficile. Toxin A (enterotoxin) + Toxin B (cytotoxin). Treat: oral vancomycin or fidaxomicin. FMT for recurrent."},
+{scenario:"A burn patient develops a wound infection with a <span class='buzzwords'>blue-green discharge and fruity odor</span>. Culture shows oxidase-positive non-lactose fermenter.",answer:"Pseudomonas aeruginosa",explain:"Burns + blue-green pigment (pyocyanin) + fruity odor + oxidase+ = Pseudomonas. Intrinsically multi-drug resistant. Use anti-pseudomonal agents."},
+{scenario:"A child with <span class='buzzwords'>sickle cell disease</span> develops fever and bone pain. Blood cultures grow Gram-negative rods that are H2S positive.",answer:"Salmonella (osteomyelitis)",explain:"Sickle cell + osteomyelitis = Salmonella (most common cause in sickle cell, vs S. aureus in general population). Functional asplenia increases susceptibility to encapsulated organisms."},
+{scenario:"An HIV+ patient presents with <span class='buzzwords'>painless, white, scrape-off patches</span> on the oral mucosa.",answer:"Candida albicans (oral thrush)",explain:"HIV + white scrape-off patches = oral thrush (Candida). Germ tube positive. If esophageal involvement = AIDS-defining (CD4 <100). Treat with fluconazole."},
+{scenario:"A farmer presents with a <span class='buzzwords'>painless black eschar</span> on his arm after handling animal hides.",answer:"Bacillus anthracis (cutaneous anthrax)",explain:"Animal hides/wool + painless black eschar = cutaneous anthrax. Non-motile, non-hemolytic, Medusa head colonies. Spore-forming. Treat: ciprofloxacin or doxycycline."},
+{scenario:"A sexually active young man presents with <span class='buzzwords'>purulent urethral discharge</span>. Gram stain of discharge shows intracellular Gram-negative diplococci.",answer:"Neisseria gonorrhoeae",explain:"Purulent urethral discharge + intracellular GN diplococci = gonorrhea. Thayer-Martin agar. Glucose only (no maltose). Treat: ceftriaxone + cover for Chlamydia."},
+{scenario:"A patient with a prosthetic heart valve develops <span class='buzzwords'>subacute endocarditis</span>. Blood cultures grow catalase-negative, alpha-hemolytic cocci that are optochin-resistant.",answer:"Viridans Streptococci",explain:"Subacute endocarditis + alpha-hemolytic + optochin resistant = Viridans strep. Normal oral flora. Infects DAMAGED valves (vs S. aureus = acute, normal valves)."},
+{scenario:"A 2-day-old neonate develops <span class='buzzwords'>meningitis and sepsis</span>. Mother was GBS-positive but did not receive intrapartum prophylaxis. CSF culture grows beta-hemolytic, CAMP+ cocci.",answer:"Streptococcus agalactiae (Group B Strep)",explain:"Neonate + meningitis/sepsis + CAMP+ = GBS (S. agalactiae). Screen mothers at 35-37 weeks. Intrapartum penicillin/ampicillin prophylaxis prevents neonatal disease."},
+{scenario:"A patient presents with <span class='buzzwords'>rice-water stools</span> and severe dehydration after traveling to South Asia and drinking untreated water.",answer:"Vibrio cholerae",explain:"Rice-water stools + travel + contaminated water = cholera. Cholera toxin permanently activates Gs \u2192 increased cAMP \u2192 massive secretory diarrhea. Treat: ORT + doxycycline."}
+];
+
+// ══════════════════════════════════════
+// DATA: ID TREE (Differential Decision Tree)
+// ══════════════════════════════════════
+const idTree={
+root:{q:"Gram Stain Result?",opts:[
+  {label:"Gram-Positive (Purple)",next:"gp_shape"},
+  {label:"Gram-Negative (Pink)",next:"gn_shape"},
+  {label:"Neither / Special Stain",next:"special"}
+]},
+gp_shape:{q:"Morphology?",opts:[
+  {label:"Cocci (round)",next:"gpc_catalase"},
+  {label:"Rods (bacilli)",next:"gpr_spore"}
+]},
+gpc_catalase:{q:"Catalase Test?",opts:[
+  {label:"Catalase + (bubbles with H2O2)",next:"gpc_cat_pos"},
+  {label:"Catalase \u2212 (no bubbles)",next:"gpc_cat_neg"}
+]},
+gpc_cat_pos:{q:"Coagulase Test?",opts:[
+  {label:"Coagulase + (clot forms)",next:"res_saureus"},
+  {label:"Coagulase \u2212 (no clot)",next:"gpc_novo"}
+]},
+gpc_novo:{q:"Novobiocin Sensitivity?",opts:[
+  {label:"Novobiocin Sensitive",next:"res_sepi"},
+  {label:"Novobiocin Resistant",next:"res_ssap"}
+]},
+gpc_cat_neg:{q:"Hemolysis on Blood Agar?",opts:[
+  {label:"Beta-hemolytic (complete clearing)",next:"gpc_beta"},
+  {label:"Alpha-hemolytic (green/partial)",next:"gpc_alpha"},
+  {label:"Gamma-hemolytic (no hemolysis)",next:"res_enterococcus"}
+]},
+gpc_beta:{q:"Bacitracin Sensitivity?",opts:[
+  {label:"Bacitracin Sensitive (zone of inhibition)",next:"res_spyo"},
+  {label:"Bacitracin Resistant",next:"gpc_camp"}
+]},
+gpc_camp:{q:"CAMP Test?",opts:[
+  {label:"CAMP + (arrowhead hemolysis)",next:"res_saga"},
+  {label:"CAMP \u2212",next:"res_other_beta"}
+]},
+gpc_alpha:{q:"Optochin Sensitivity?",opts:[
+  {label:"Optochin Sensitive + Bile Soluble",next:"res_spneu"},
+  {label:"Optochin Resistant + Bile Insoluble",next:"res_viridans"}
+]},
+gpr_spore:{q:"Spore-Forming?",opts:[
+  {label:"Yes, Spore-former",next:"gpr_aerobe"},
+  {label:"No spores",next:"gpr_nospore"}
+]},
+gpr_aerobe:{q:"Oxygen Requirement?",opts:[
+  {label:"Aerobic (Bacillus)",next:"gpr_bacillus"},
+  {label:"Anaerobic (Clostridium)",next:"gpr_clostridium"}
+]},
+gpr_bacillus:{q:"Motility?",opts:[
+  {label:"Non-motile + Capsule",next:"res_anthracis"},
+  {label:"Motile",next:"res_bcereus"}
+]},
+gpr_clostridium:{q:"Toxin/Disease?",opts:[
+  {label:"Spastic paralysis (blocks GABA/glycine)",next:"res_tetani"},
+  {label:"Flaccid paralysis (blocks ACh)",next:"res_botulinum"},
+  {label:"Pseudomembranous colitis (Toxin A/B)",next:"res_cdiff"},
+  {label:"Gas gangrene (alpha toxin/lecithinase)",next:"res_perfringens"}
+]},
+gpr_nospore:{q:"Key Feature?",opts:[
+  {label:"Tumbling motility at 22\u00b0C, cold enrichment",next:"res_listeria"},
+  {label:"Club-shaped, metachromatic granules, V/L shapes",next:"res_diphtheria"}
+]},
+gn_shape:{q:"Morphology?",opts:[
+  {label:"Cocci / Coccobacilli",next:"gnc_ox"},
+  {label:"Rods",next:"gnr_lactose"}
+]},
+gnc_ox:{q:"Oxidase Test?",opts:[
+  {label:"Oxidase + (Neisseria)",next:"gnc_maltose"},
+  {label:"Oxidase + (small coccobacilli)",next:"gnc_other"}
+]},
+gnc_maltose:{q:"Maltose Fermentation?",opts:[
+  {label:"Ferments Maltose + Glucose",next:"res_nmen"},
+  {label:"Ferments Glucose ONLY",next:"res_ngon"}
+]},
+gnc_other:{q:"Identify by feature:",opts:[
+  {label:"Requires Factors V + X, chocolate agar",next:"res_hflu"},
+  {label:"Whooping cough, Bordet-Gengou agar",next:"res_pertussis"},
+  {label:"Otitis media in children, hockey puck",next:"res_moraxella"}
+]},
+gnr_lactose:{q:"Lactose Fermentation (MAC/EMB)?",opts:[
+  {label:"Lactose Fermenter (pink on MAC)",next:"gnr_lac_pos"},
+  {label:"Non-Lactose Fermenter (clear on MAC)",next:"gnr_lac_neg"},
+  {label:"Oxidase + (not Enteric)",next:"gnr_ox_pos"}
+]},
+gnr_lac_pos:{q:"Identify by feature:",opts:[
+  {label:"Indole +, green sheen on EMB",next:"res_ecoli"},
+  {label:"Mucoid colonies, currant-jelly sputum",next:"res_kleb"},
+  {label:"Red pigment at room temp",next:"res_serratia"},
+  {label:"Motile, AmpC beta-lactamase",next:"res_enterobacter"}
+]},
+gnr_lac_neg:{q:"Key Feature?",opts:[
+  {label:"H2S +, motile, flagella",next:"res_salmonella"},
+  {label:"Non-motile, very low ID50, dysentery",next:"res_shigella"},
+  {label:"Swarming motility, urease +, staghorn calculi",next:"res_proteus"},
+  {label:"Cold enrichment, mimics appendicitis",next:"res_yersinia"}
+]},
+gnr_ox_pos:{q:"Identify by feature:",opts:[
+  {label:"Blue-green pigment, fruity odor, 42\u00b0C",next:"res_pseudo"},
+  {label:"Comma-shaped, rice-water stools, TCBS",next:"res_vibrio"},
+  {label:"S-shaped/gull-wing, 42\u00b0C, microaerophilic",next:"res_campy"},
+  {label:"Spiral, urease +, gastric ulcers",next:"res_hpylori"}
+]},
+special:{q:"Stain / Culture Method?",opts:[
+  {label:"Acid-Fast + (bright red)",next:"sp_afb"},
+  {label:"No cell wall / No Gram stain",next:"res_mycoplasma"},
+  {label:"Obligate intracellular (EB/RB)",next:"res_chlamydia"},
+  {label:"Dark-field microscopy (spirochete)",next:"sp_spiro"},
+  {label:"Fungal / Silver stain",next:"sp_fungi"}
+]},
+sp_afb:{q:"Growth characteristics?",opts:[
+  {label:"Slow grower, LJ agar, caseating granulomas",next:"res_tb"},
+  {label:"Cannot culture, cool body parts, armadillos",next:"res_leprae"}
+]},
+sp_spiro:{q:"Disease presentation?",opts:[
+  {label:"Painless chancre \u2192 rash (palms/soles) \u2192 gummas",next:"res_syphilis"},
+  {label:"Bull's-eye rash, Bell palsy, arthritis (tick bite)",next:"res_lyme"},
+  {label:"Question-mark shape, animal urine, Weil disease",next:"res_lepto"}
+]},
+sp_fungi:{q:"Identify:",opts:[
+  {label:"Germ tube +, pseudohyphae, oral thrush",next:"res_candida"},
+  {label:"GMS silver stain, AIDS, ground-glass CXR",next:"res_pjp"},
+  {label:"India ink +, meningitis in HIV",next:"res_crypto"}
+]}
+};
+const idResults={
+res_saureus:{name:"Staphylococcus aureus",key:"Catalase+, Coagulase+, MSA Yellow, Beta-hemolytic. Protein A binds IgG Fc. MRSA = Vancomycin."},
+res_sepi:{name:"Staphylococcus epidermidis",key:"Catalase+, Coagulase-, Novobiocin Sensitive. Biofilm on prosthetic devices/catheters."},
+res_ssap:{name:"Staphylococcus saprophyticus",key:"Catalase+, Coagulase-, Novobiocin Resistant. UTI in young sexually active women."},
+res_spyo:{name:"Streptococcus pyogenes (GAS)",key:"Catalase-, Beta-hemolytic, Bacitracin Sensitive, PYR+. M protein. Rheumatic fever, PSGN."},
+res_saga:{name:"Streptococcus agalactiae (GBS)",key:"Catalase-, Beta-hemolytic, Bacitracin Resistant, CAMP+. #1 neonatal meningitis/sepsis."},
+res_other_beta:{name:"Other Beta-hemolytic Strep",key:"Consider Group C/G Streptococci or other beta-hemolytic organisms."},
+res_spneu:{name:"Streptococcus pneumoniae",key:"Catalase-, Alpha-hemolytic, Optochin Sensitive, Bile Soluble, Quellung+. Lancet diplococci. #1 CAP, meningitis adults, otitis media."},
+res_viridans:{name:"Viridans Streptococci",key:"Catalase-, Alpha-hemolytic, Optochin Resistant, Bile Insoluble. Subacute endocarditis on damaged valves. Dental caries (S. mutans)."},
+res_enterococcus:{name:"Enterococcus faecalis/faecium",key:"Catalase-, Gamma-hemolytic, Bile Esculin+, Grows in 6.5% NaCl, PYR+. VRE. UTI, biliary infections."},
+res_anthracis:{name:"Bacillus anthracis",key:"Gram+ rod, Spore-former, Aerobic, NON-motile, Medusa head colonies. Cutaneous: black eschar. Pulmonary: woolsorter's."},
+res_bcereus:{name:"Bacillus cereus",key:"Gram+ rod, Spore-former, Aerobic, Motile. Reheated fried rice (emetic, 1-6h). Diarrheal (8-16h)."},
+res_tetani:{name:"Clostridium tetani",key:"Anaerobic spore-former, Drumstick spores. Tetanospasmin blocks GABA/glycine = SPASTIC paralysis. Lockjaw, opisthotonus."},
+res_botulinum:{name:"Clostridium botulinum",key:"Anaerobic spore-former. Botulinum toxin blocks ACh at NMJ = DESCENDING FLACCID paralysis. Honey in infants."},
+res_cdiff:{name:"Clostridioides difficile",key:"Anaerobic spore-former. Toxin A (enterotoxin) + Toxin B (cytotoxin). Pseudomembranes. Antibiotic-associated. Tx: oral Vanco/Fidaxomicin."},
+res_perfringens:{name:"Clostridium perfringens",key:"Anaerobic spore-former. Alpha toxin (lecithinase). Gas gangrene (crepitus). Double-zone beta-hemolysis. Food poisoning (reheated meat)."},
+res_listeria:{name:"Listeria monocytogenes",key:"Gram+ rod, Catalase+, Beta-hemolytic, Tumbling motility at 22\u00b0C, Cold growth (4\u00b0C). Unpasteurized dairy. Neonatal meningitis. Actin rockets."},
+res_diphtheria:{name:"Corynebacterium diphtheriae",key:"Gram+ rod, Club-shaped, V/L/Chinese letters, Metachromatic granules. Diphtheria toxin (ADP-ribosylates EF-2). Gray pseudomembrane. Elek test."},
+res_nmen:{name:"Neisseria meningitidis",key:"Gram- diplococci, Oxidase+, Ferments Maltose+Glucose. Capsule. Petechial rash. Meningitis (college, military). Waterhouse-Friderichsen."},
+res_ngon:{name:"Neisseria gonorrhoeae",key:"Gram- diplococci, Oxidase+, Glucose ONLY (no maltose). Thayer-Martin agar. Intracellular. STI. Treat: Ceftriaxone."},
+res_moraxella:{name:"Moraxella catarrhalis",key:"Gram- diplococci, Oxidase+, DNase+. Otitis media, sinusitis, COPD exacerbation. Beta-lactamase producer."},
+res_hflu:{name:"Haemophilus influenzae",key:"Gram- coccobacillus. Requires Factors V (NAD) + X (hemin). Chocolate agar. Satellitism. Type b: epiglottitis, meningitis. Hib vaccine."},
+res_pertussis:{name:"Bordetella pertussis",key:"Gram- coccobacillus. Whooping cough (3 stages). Pertussis toxin (inactivates Gi, increases cAMP). Lymphocytosis. Bordet-Gengou agar. DTaP vaccine."},
+res_ecoli:{name:"Escherichia coli",key:"Gram- rod, Lactose+, Indole+, Green sheen on EMB. #1 UTI. ETEC (traveler's), EHEC O157:H7 (HUS - no antibiotics!)."},
+res_kleb:{name:"Klebsiella pneumoniae",key:"Gram- rod, Lactose+, Mucoid capsule. Currant-jelly sputum. Alcoholics/diabetics. ESBL/CRE resistance."},
+res_serratia:{name:"Serratia marcescens",key:"Gram- rod, Red pigment at room temp. Nosocomial. DNase+."},
+res_enterobacter:{name:"Enterobacter cloacae",key:"Gram- rod, Lactose+, Motile. Inducible AmpC beta-lactamase (avoid 3rd-gen cephalosporins)."},
+res_salmonella:{name:"Salmonella species",key:"Gram- rod, Non-lactose, H2S+, Motile. Typhi: typhoid fever, rose spots, carriers. Enteritidis: gastroenteritis, poultry. Osteomyelitis in sickle cell."},
+res_shigella:{name:"Shigella species",key:"Gram- rod, Non-lactose, Non-motile, H2S-, No gas. Very low ID50. Shiga toxin (S. dysenteriae). Bloody dysentery."},
+res_proteus:{name:"Proteus mirabilis",key:"Gram- rod, Non-lactose, Urease+, Swarming motility, H2S+. Staghorn calculi (struvite stones). Alkaline urine."},
+res_yersinia:{name:"Yersinia enterocolitica",key:"Gram- rod, Cold enrichment (4\u00b0C). Mimics appendicitis. Puppy feces, contaminated pork."},
+res_pseudo:{name:"Pseudomonas aeruginosa",key:"Gram- rod, Oxidase+, Non-lactose, Blue-green (pyocyanin), Fruity odor, 42\u00b0C. Burns, CF, ICU. Exotoxin A (like diphtheria). Multi-drug resistant."},
+res_vibrio:{name:"Vibrio cholerae",key:"Gram- rod, Comma-shaped, Oxidase+. TCBS agar (yellow). Rice-water stools. Cholera toxin: Gs \u2192 cAMP \u2192 secretory diarrhea. ORT."},
+res_campy:{name:"Campylobacter jejuni",key:"Gram- rod, S-shaped/gull-wing, Oxidase+, 42\u00b0C, Microaerophilic. #1 bacterial diarrhea US. Undercooked poultry. Guillain-Barr\u00e9 syndrome."},
+res_hpylori:{name:"Helicobacter pylori",key:"Gram- spiral, Oxidase+, Urease+. Gastritis, peptic ulcers, gastric cancer, MALT lymphoma. Urea breath test. Triple therapy."},
+res_tb:{name:"Mycobacterium tuberculosis",key:"Acid-fast+, Slow grower (LJ agar, weeks). Cord factor (mycolic acid). Caseating granulomas. RIPE therapy. PPD/IGRA screening."},
+res_leprae:{name:"Mycobacterium leprae",key:"Acid-fast+, Cannot culture. Hansen disease. Cool body parts. Tuberculoid vs Lepromatous. Armadillos. Dapsone + Rifampin."},
+res_mycoplasma:{name:"Mycoplasma pneumoniae",key:"NO cell wall. No Gram stain. Walking pneumonia. Cold agglutinins (IgM). Fried-egg colonies. Macrolides (not beta-lactams!)."},
+res_chlamydia:{name:"Chlamydia trachomatis",key:"Obligate intracellular. Elementary body (infectious) / Reticulate body (replicates). A-C: trachoma. D-K: STI/neonatal. L1-L3: LGV. NAAT for diagnosis."},
+res_syphilis:{name:"Treponema pallidum",key:"Spirochete, Dark-field microscopy. Primary: painless chancre. Secondary: rash (palms/soles). Tertiary: gummas, aortitis, tabes dorsalis. VDRL/RPR screen, FTA-ABS confirm."},
+res_lyme:{name:"Borrelia burgdorferi",key:"Spirochete, Ixodes tick. Erythema migrans (bull's-eye). Stage 2: Bell palsy, heart block. Stage 3: arthritis. Doxycycline (early), Ceftriaxone (late)."},
+res_lepto:{name:"Leptospira interrogans",key:"Spirochete, Question-mark shape. Animal urine (rats). Weil disease: jaundice + renal failure + hemorrhage."},
+res_candida:{name:"Candida albicans",key:"Germ tube+, Pseudohyphae, Sabouraud agar. Oral thrush, vulvovaginal, esophageal (AIDS-defining). Fluconazole."},
+res_pjp:{name:"Pneumocystis jirovecii",key:"GMS silver stain (crushed ping-pong ball cysts). AIDS (CD4<200). Bilateral ground-glass CXR. TMP-SMX (treat + prophylaxis)."},
+res_crypto:{name:"Cryptococcus neoformans",key:"India ink+ (capsule halo). Meningitis in AIDS. Bird (pigeon) droppings. Latex agglutination for capsular antigen. Amphotericin B + Flucytosine."}
+};
+
+// ══════════════════════════════════════
+// DATA: TIMER STATE
+// ══════════════════════════════════════
 const timers=[
-  {n:"Crystal Violet",d:60,r:60,on:false,iv:null},
-  {n:"Iodine Mordant",d:60,r:60,on:false,iv:null},
-  {n:"Decolorizer",d:20,r:20,on:false,iv:null},
-  {n:"Safranin",d:60,r:60,on:false,iv:null},
-  {n:"Acid-Fast Heat",d:300,r:300,on:false,iv:null},
-  {n:"Custom 5 min",d:300,r:300,on:false,iv:null},
-  {n:"Custom 10 min",d:600,r:600,on:false,iv:null}
+{n:"Crystal Violet",d:60,r:60,on:false,iv:null},
+{n:"Iodine Mordant",d:60,r:60,on:false,iv:null},
+{n:"Decolorizer",d:20,r:20,on:false,iv:null},
+{n:"Safranin",d:60,r:60,on:false,iv:null},
+{n:"Acid-Fast Heat",d:300,r:300,on:false,iv:null},
+{n:"Malachite Green (Spores)",d:300,r:300,on:false,iv:null},
+{n:"Giemsa Stain",d:2700,r:2700,on:false,iv:null},
+{n:"Custom 5 min",d:300,r:300,on:false,iv:null},
+{n:"Custom 10 min",d:600,r:600,on:false,iv:null}
 ];
 
-// ── FLASHCARDS DATA ──
-let flashcards = [];
+// ══════════════════════════════════════
+// FLASHCARDS
+// ══════════════════════════════════════
+let flashcards=[];
 function buildFlashcards(){
-  flashcards = [];
-  organisms.forEach(o=>{
-    flashcards.push({cat:"Organisms",q:o.name,a:`${o.type} | ${o.morphology}\nDiseases: ${o.diseases.slice(0,3).join(", ")}\nLab: ${o.lab}\nTx: ${o.treatment}`});
-  });
-  aminoAcids.forEach(a=>{
-    flashcards.push({cat:"Amino Acids",q:`${a.name} (${a.three}/${a.one})`,a:`Type: ${a.type}\n${a.feature}`});
-  });
+  flashcards=[];
+  organisms.forEach(o=>{flashcards.push({cat:"Organisms",q:o.name,a:`${o.type} | ${o.morphology}\nDiseases: ${o.diseases.slice(0,3).join(", ")}\nLab: ${o.lab}\nTx: ${o.treatment}`});});
+  aminoAcids.forEach(a=>{flashcards.push({cat:"Amino Acids",q:`${a.name} (${a.three}/${a.one})`,a:`Type: ${a.type}\n${a.feature}`});});
   nucleicData.dna.forEach(d=>{flashcards.push({cat:"Nucleic Acids",q:`DNA: ${d.title}`,a:d.info});});
   nucleicData.rna.forEach(r=>{flashcards.push({cat:"Nucleic Acids",q:`RNA: ${r.title}`,a:r.info});});
   labStains.forEach(s=>{flashcards.push({cat:"Staining",q:s.name,a:`Result: ${s.result}\nTip: ${s.tip}`});});
+  mediaGuide.forEach(m=>{flashcards.push({cat:"Media",q:m.name,a:`${m.purpose}\n${m.results.map(r=>r.label+': '+r.example).join('\n')}`});});
 }
 buildFlashcards();
 
-// ── QUIZ DATA ──
+// ══════════════════════════════════════
+// QUIZ
+// ══════════════════════════════════════
 function buildQuizQuestions(){
   const qs=[];
   organisms.forEach(o=>{
-    qs.push({cat:"Organisms",q:`Which organism is described: "${o.lab}"?`,correct:o.name,options:getRandomOptions(organisms.map(x=>x.name),o.name,3)});
-    qs.push({cat:"Organisms",q:`What is the treatment for ${o.name}?`,correct:o.treatment,options:getRandomOptions(organisms.map(x=>x.treatment),o.treatment,3)});
-    if(o.diseases.length>0){qs.push({cat:"Organisms",q:`${o.name} causes which of the following?`,correct:o.diseases[0],options:getRandomOptions(organisms.flatMap(x=>x.diseases),o.diseases[0],3)});}
+    qs.push({cat:"Organisms",q:`Which organism: "${o.lab}"?`,correct:o.name,options:getRandomOptions(organisms.map(x=>x.name),o.name,3)});
+    if(o.diseases.length>0) qs.push({cat:"Organisms",q:`${o.name} causes which of the following?`,correct:o.diseases[0],options:getRandomOptions(organisms.flatMap(x=>x.diseases),o.diseases[0],3)});
   });
   aminoAcids.forEach(a=>{
-    qs.push({cat:"Amino Acids",q:`What is the one-letter code for ${a.name}?`,correct:a.one,options:getRandomOptions(aminoAcids.map(x=>x.one),a.one,3)});
+    qs.push({cat:"Amino Acids",q:`One-letter code for ${a.name}?`,correct:a.one,options:getRandomOptions(aminoAcids.map(x=>x.one),a.one,3)});
     qs.push({cat:"Amino Acids",q:`${a.name} is classified as:`,correct:a.type,options:getRandomOptions(["Nonpolar","Polar","Positive","Negative"],a.type,3)});
+  });
+  labStains.forEach(s=>{
+    qs.push({cat:"Staining",q:`What does the ${s.name} show?`,correct:s.result.substring(0,60)+'...',options:getRandomOptions(labStains.map(x=>x.result.substring(0,60)+'...'),s.result.substring(0,60)+'...',3)});
   });
   return qs;
 }
 function getRandomOptions(pool,correct,count){
   const filtered=[...new Set(pool.filter(x=>x!==correct))];
   const shuffled=filtered.sort(()=>Math.random()-.5).slice(0,count);
-  const options=[correct,...shuffled].sort(()=>Math.random()-.5);
-  return options;
+  return[correct,...shuffled].sort(()=>Math.random()-.5);
 }
 
-// ── NAVIGATION ──
+// ══════════════════════════════════════
+// NAVIGATION
+// ══════════════════════════════════════
 function showSection(id){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -304,22 +612,29 @@ function showSection(id){
   if(id==='stains')renderStains();
   if(id==='amino')renderAminoAcids();
   if(id==='nucleic')showNATab('dna');
+  if(id==='idtree')renderIDTree();
+  if(id==='media')renderMedia();
   if(id==='flashcards')initFlashcards();
   if(id==='quiz')initQuiz();
+  if(id==='vignettes')renderVignette();
+  if(id==='labmath')renderLabMath();
   if(id==='timers')renderTimers();
 }
 
-// ── ORGANISMS ──
+// ══════════════════════════════════════
+// ORGANISMS
+// ══════════════════════════════════════
 let orgCatFilter='All';
 function renderOrganisms(search=''){
   const types=['All',...new Set(organisms.map(o=>o.type))];
   document.getElementById('orgFilter').innerHTML=types.map(t=>`<button class="${t===orgCatFilter?'active':''}" onclick="orgCatFilter='${t}';renderOrganisms(document.querySelector('#organisms .search-box').value)">${t}</button>`).join('');
+  const s=search.toLowerCase();
   const filtered=organisms.filter(o=>{
-    const matchSearch=o.name.toLowerCase().includes(search.toLowerCase())||o.type.toLowerCase().includes(search.toLowerCase())||o.diseases.some(d=>d.toLowerCase().includes(search.toLowerCase()));
+    const matchSearch=!s||o.name.toLowerCase().includes(s)||o.type.toLowerCase().includes(s)||o.diseases.some(d=>d.toLowerCase().includes(s))||o.lab.toLowerCase().includes(s)||o.virulence.some(v=>v.toLowerCase().includes(s))||o.treatment.toLowerCase().includes(s);
     const matchCat=orgCatFilter==='All'||o.type===orgCatFilter;
     return matchSearch&&matchCat;
   });
-  document.getElementById('orgGrid').innerHTML=filtered.map((o,i)=>`<div class="org-card" onclick="showOrgDetail(${organisms.indexOf(o)})"><h4>${o.name}</h4><span class="type">${o.type}</span><p>${o.diseases.slice(0,2).join(', ')}</p></div>`).join('')||'<p style="color:var(--muted);text-align:center;padding:40px">No organisms found.</p>';
+  document.getElementById('orgGrid').innerHTML=filtered.map(o=>`<div class="org-card" onclick="showOrgDetail(${organisms.indexOf(o)})"><h4>${o.name}</h4><span class="type">${o.type}</span><p>${o.diseases.slice(0,2).join(', ')}</p></div>`).join('')||'<p style="color:var(--muted);text-align:center;padding:40px">No organisms found.</p>';
 }
 function filterOrganisms(v){renderOrganisms(v)}
 function showOrgDetail(i){
@@ -327,12 +642,11 @@ function showOrgDetail(i){
   document.getElementById('orgGrid').style.display='none';
   document.getElementById('orgFilter').style.display='none';
   document.querySelector('#organisms .search-box').style.display='none';
-  const d=document.getElementById('orgDetail');
-  d.style.display='block';
-  d.innerHTML=`<button class="back-btn" onclick="backToOrganisms()">← Back to list</button>
+  const d=document.getElementById('orgDetail');d.style.display='block';
+  d.innerHTML=`<button class="back-btn" onclick="backToOrganisms()">\u2190 Back to list</button>
     <h2>${o.name}</h2>
-    <span class="badge" style="background:${o.gram==='positive'?'rgba(99,102,241,.2);color:var(--accent2)':o.gram==='negative'?'rgba(239,68,68,.2);color:var(--red)':'rgba(234,179,8,.2);color:var(--yellow)'}">${o.type}</span>
-    <span class="badge" style="background:rgba(34,197,94,.15);color:var(--green)">${o.morphology}</span>
+    <span class="badge" style="background:${o.gram==='positive'?'rgba(192,132,252,.2);color:var(--accent2)':o.gram==='negative'?'rgba(251,113,133,.2);color:var(--red)':'rgba(251,191,36,.2);color:var(--yellow)'}">${o.type}</span>
+    <span class="badge" style="background:rgba(52,211,153,.15);color:var(--green)">${o.morphology}</span>
     <table><tr><th>Diseases</th><td>${o.diseases.join(', ')}</td></tr>
     <tr><th>Virulence Factors</th><td>${o.virulence.join(', ')}</td></tr>
     <tr><th>Lab Identification</th><td>${o.lab}</td></tr>
@@ -346,7 +660,23 @@ function backToOrganisms(){
   document.querySelector('#organisms .search-box').style.display='';
 }
 
-// ── AMINO ACIDS ──
+// ══════════════════════════════════════
+// STAINS
+// ══════════════════════════════════════
+function renderStains(){
+  document.getElementById('stainsContent').innerHTML=
+    '<div class="sectitle">Laboratory Staining Techniques</div>'+
+    labStains.map(s=>'<div class="card scard"><h3>'+s.name+'</h3>'+
+      '<div class="ssteps">'+s.steps.map((st,j)=>'<div class="stp"><div class="stp-n">'+(j+1)+'</div><span style="font-size:13px">'+st+'</span></div>').join('')+'</div>'+
+      '<div class="sinfo">'+
+      '<div class="sibox" style="background:rgba(52,211,153,.1);border-color:rgba(52,211,153,.3)"><h5 style="color:var(--green)">Result</h5><p>'+s.result+'</p></div>'+
+      '<div class="sibox" style="background:rgba(251,191,36,.1);border-color:rgba(251,191,36,.3)"><h5 style="color:var(--yellow)">Pro Tip</h5><p>'+s.tip+'</p></div>'+
+      '</div></div>').join('');
+}
+
+// ══════════════════════════════════════
+// AMINO ACIDS
+// ══════════════════════════════════════
 let aaCatFilter='All';
 function renderAminoAcids(search=''){
   const types=['All','Nonpolar','Polar','Positive','Negative'];
@@ -356,12 +686,13 @@ function renderAminoAcids(search=''){
     const matchCat=aaCatFilter==='All'||a.type===aaCatFilter;
     return matchSearch&&matchCat;
   });
-  const tbody=document.querySelector('#aaTable tbody');
-  tbody.innerHTML=filtered.map(a=>`<tr><td><strong style="color:var(--text)">${a.name}</strong></td><td class="aa-code">${a.three}</td><td class="aa-code">${a.one}</td><td>${a.type}</td><td>${a.feature}</td></tr>`).join('');
+  document.querySelector('#aaTable tbody').innerHTML=filtered.map(a=>`<tr><td><strong style="color:var(--text)">${a.name}</strong></td><td class="aa-code">${a.three}</td><td class="aa-code">${a.one}</td><td>${a.type}</td><td>${a.feature}</td></tr>`).join('');
 }
 function filterAA(v){renderAminoAcids(v)}
 
-// ── NUCLEIC ACIDS ──
+// ══════════════════════════════════════
+// NUCLEIC ACIDS
+// ══════════════════════════════════════
 let naTab='dna';
 function showNATab(tab){
   naTab=tab;
@@ -371,15 +702,159 @@ function showNATab(tab){
   if(tab==='compare'){
     c.innerHTML=`<table class="aa-table"><thead><tr><th>Feature</th><th>DNA</th><th>RNA</th></tr></thead><tbody>${nucleicData.compare.map(r=>`<tr><td><strong style="color:var(--text)">${r.feature}</strong></td><td>${r.dna}</td><td>${r.rna}</td></tr>`).join('')}</tbody></table>`;
   } else {
-    const data=nucleicData[tab];
-    c.innerHTML=data.map(d=>`<div class="na-card"><h4>${d.title}</h4><p>${d.info}</p></div>`).join('');
+    c.innerHTML=nucleicData[tab].map(d=>`<div class="na-card"><h4>${d.title}</h4><p>${d.info}</p></div>`).join('');
   }
 }
 
-// ── FLASHCARDS ──
+// ══════════════════════════════════════
+// ID TREE (Differential Decision Tree)
+// ══════════════════════════════════════
+let treePath=[];
+let treeNode='root';
+function renderIDTree(){
+  const el=document.getElementById('idtreeContent');
+  let html='<div class="sectitle">Differential Decision Tree</div>';
+  html+='<p style="color:var(--muted);margin-bottom:16px;font-size:.9rem">Follow the lab results step-by-step to identify your unknown organism.</p>';
+  if(treePath.length>0){
+    html+='<div class="tree-path">';
+    treePath.forEach((p,i)=>{html+=`<span class="tp">${p}</span>`;if(i<treePath.length-1)html+='<span class="arrow">\u2192</span>';});
+    html+='</div>';
+  }
+  if(treeNode.startsWith('res_')){
+    const r=idResults[treeNode];
+    html+=`<div class="tree-result"><h3>${r.name}</h3><p>${r.key}</p></div>`;
+    html+=`<button class="back-btn" onclick="resetTree()" style="margin-top:16px">\u2190 Start Over</button>`;
+  } else {
+    const node=idTree[treeNode];
+    html+=`<div class="tree-step"><h3>${node.q}</h3><div class="tree-opts">`;
+    node.opts.forEach(o=>{html+=`<button class="tree-btn" onclick="treeSelect('${o.next}','${o.label.replace(/'/g,"\\'")}')"><span>${o.label}</span></button>`;});
+    html+='</div></div>';
+    if(treePath.length>0) html+=`<button class="back-btn" onclick="treeBack()">\u2190 Back</button>`;
+  }
+  el.innerHTML=html;
+}
+let treeHistory=[];
+function treeSelect(next,label){treeHistory.push(treeNode);treePath.push(label);treeNode=next;renderIDTree();}
+function treeBack(){if(treeHistory.length>0){treeNode=treeHistory.pop();treePath.pop();renderIDTree();}}
+function resetTree(){treeNode='root';treePath=[];treeHistory=[];renderIDTree();}
+
+// ══════════════════════════════════════
+// MEDIA GUIDE
+// ══════════════════════════════════════
+function renderMedia(){
+  document.getElementById('mediaContent').innerHTML=
+    '<div class="sectitle">Agar Media Guide</div>'+
+    '<p style="color:var(--muted);margin-bottom:16px;font-size:.9rem">Visual reference for selective & differential media used in clinical microbiology.</p>'+
+    mediaGuide.map(m=>'<div class="media-card"><h3>'+m.name+'</h3>'+
+      '<p style="color:var(--muted);font-size:.85rem;margin-bottom:4px"><strong style="color:var(--text)">Purpose:</strong> '+m.purpose+'</p>'+
+      '<p style="color:var(--muted);font-size:.85rem"><strong style="color:var(--text)">Selective:</strong> '+m.selective+'</p>'+
+      '<p style="color:var(--muted);font-size:.85rem;margin-bottom:8px"><strong style="color:var(--text)">Differential:</strong> '+m.differential+'</p>'+
+      '<div class="media-row">'+m.results.map(r=>
+        '<div class="media-example"><div style="display:flex;align-items:center;gap:10px;margin-bottom:6px"><div style="width:28px;height:28px;border-radius:50%;background:'+r.color+';flex-shrink:0"></div><h5>'+r.label+'</h5></div><p>'+r.example+'</p></div>'
+      ).join('')+'</div></div>').join('');
+}
+
+// ══════════════════════════════════════
+// CLINICAL VIGNETTES
+// ══════════════════════════════════════
+let vigIndex=-1,vigRevealed=false;
+function renderVignette(){
+  const el=document.getElementById('vigContent');
+  if(vigIndex<0){
+    vigIndex=Math.floor(Math.random()*vignettes.length);
+    vigRevealed=false;
+  }
+  const v=vignettes[vigIndex];
+  let html='<div class="sectitle">Clinical Vignette Challenge</div>';
+  html+='<p style="color:var(--muted);margin-bottom:16px;font-size:.9rem">Read the clinical scenario and identify the organism. Look for the <span style="color:var(--yellow);font-weight:600">buzzwords</span>!</p>';
+  html+=`<div class="vignette-box"><div class="scenario">${v.scenario}</div>`;
+  if(vigRevealed){
+    html+=`<div style="text-align:left;margin-top:16px;padding:16px;background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.3);border-radius:10px"><h4 style="color:var(--green);margin-bottom:6px">${v.answer}</h4><p style="color:var(--muted);font-size:.9rem;line-height:1.6">${v.explain}</p></div>`;
+    html+=`<button class="vig-btn vig-primary" onclick="nextVignette()" style="margin-top:16px">Next Case \u2192</button>`;
+  } else {
+    html+=`<button class="vig-btn vig-primary" onclick="revealVignette()">Reveal Answer</button>`;
+  }
+  html+='</div>';
+  html+=`<div style="text-align:center;color:var(--muted);font-size:.85rem">Case ${vigIndex+1} of ${vignettes.length}</div>`;
+  el.innerHTML=html;
+}
+function revealVignette(){vigRevealed=true;renderVignette();}
+function nextVignette(){vigIndex=Math.floor(Math.random()*vignettes.length);vigRevealed=false;renderVignette();}
+
+// ══════════════════════════════════════
+// LAB MATH
+// ══════════════════════════════════════
+function renderLabMath(){
+  document.getElementById('labmathContent').innerHTML=`
+    <div class="sectitle">Lab Math Calculators</div>
+    <div class="calc-card">
+      <h3>CFU/mL Calculator</h3>
+      <p class="calc-formula">CFU/mL = Colonies \u00f7 (Dilution Factor \u00d7 Volume Plated in mL)</p>
+      <label>Number of Colonies Counted</label>
+      <input class="calc-input" type="number" id="cfuColonies" placeholder="e.g. 150" oninput="calcCFU()">
+      <label>Dilution Factor (e.g. 0.001 for 10\u207b\u00b3)</label>
+      <input class="calc-input" type="number" step="any" id="cfuDilution" placeholder="e.g. 0.001" oninput="calcCFU()">
+      <label>Volume Plated (mL)</label>
+      <input class="calc-input" type="number" step="any" id="cfuVolume" placeholder="e.g. 0.1" value="0.1" oninput="calcCFU()">
+      <div class="calc-result" id="cfuResult">Enter values above</div>
+    </div>
+    <div class="calc-card">
+      <h3>Total Magnification Calculator</h3>
+      <p class="calc-formula">Total Magnification = Ocular Lens \u00d7 Objective Lens</p>
+      <label>Ocular Lens Power</label>
+      <input class="calc-input" type="number" id="magOcular" placeholder="Usually 10" value="10" oninput="calcMag()">
+      <label>Objective Lens Power</label>
+      <div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap">
+        <button class="tree-btn" onclick="document.getElementById('magObj').value=4;calcMag()" style="padding:8px 16px;font-size:.85rem">4x (Scanning)</button>
+        <button class="tree-btn" onclick="document.getElementById('magObj').value=10;calcMag()" style="padding:8px 16px;font-size:.85rem">10x (Low)</button>
+        <button class="tree-btn" onclick="document.getElementById('magObj').value=40;calcMag()" style="padding:8px 16px;font-size:.85rem">40x (High)</button>
+        <button class="tree-btn" onclick="document.getElementById('magObj').value=100;calcMag()" style="padding:8px 16px;font-size:.85rem">100x (Oil)</button>
+      </div>
+      <input class="calc-input" type="number" id="magObj" placeholder="e.g. 40" style="margin-top:8px" oninput="calcMag()">
+      <div class="calc-result" id="magResult">Select or enter objective power</div>
+    </div>
+    <div class="calc-card">
+      <h3>Dilution Calculator</h3>
+      <p class="calc-formula">C1 \u00d7 V1 = C2 \u00d7 V2</p>
+      <label>Initial Concentration (C1)</label>
+      <input class="calc-input" type="number" step="any" id="dilC1" placeholder="e.g. 100" oninput="calcDil()">
+      <label>Initial Volume (V1) - mL</label>
+      <input class="calc-input" type="number" step="any" id="dilV1" placeholder="e.g. 10" oninput="calcDil()">
+      <label>Final Concentration (C2)</label>
+      <input class="calc-input" type="number" step="any" id="dilC2" placeholder="e.g. 25" oninput="calcDil()">
+      <div class="calc-result" id="dilResult">Enter C1, V1, and C2 to find V2</div>
+    </div>`;
+}
+function calcCFU(){
+  const c=parseFloat(document.getElementById('cfuColonies').value);
+  const d=parseFloat(document.getElementById('cfuDilution').value);
+  const v=parseFloat(document.getElementById('cfuVolume').value);
+  const el=document.getElementById('cfuResult');
+  if(c>=0&&d>0&&v>0){const r=c/(d*v);el.textContent=`${r.toLocaleString()} CFU/mL`;}
+  else el.textContent='Enter valid values';
+}
+function calcMag(){
+  const oc=parseFloat(document.getElementById('magOcular').value);
+  const ob=parseFloat(document.getElementById('magObj').value);
+  const el=document.getElementById('magResult');
+  if(oc>0&&ob>0) el.textContent=`Total Magnification: ${oc*ob}x`;
+  else el.textContent='Enter values';
+}
+function calcDil(){
+  const c1=parseFloat(document.getElementById('dilC1').value);
+  const v1=parseFloat(document.getElementById('dilV1').value);
+  const c2=parseFloat(document.getElementById('dilC2').value);
+  const el=document.getElementById('dilResult');
+  if(c1>0&&v1>0&&c2>0){const v2=(c1*v1)/c2;el.textContent=`V2 = ${v2.toFixed(2)} mL`;}
+  else el.textContent='Enter C1, V1, and C2 to find V2';
+}
+
+// ══════════════════════════════════════
+// FLASHCARDS
+// ══════════════════════════════════════
 let fcIndex=0,fcFlipped=false,fcCat='All',fcDeck=[];
 function initFlashcards(){
-  const cats=['All','Organisms','Staining','Amino Acids','Nucleic Acids'];
+  const cats=['All','Organisms','Staining','Media','Amino Acids','Nucleic Acids'];
   document.getElementById('fcFilter').innerHTML=cats.map(c=>`<button class="${c===fcCat?'active':''}" onclick="fcCat='${c}';initFlashcards()">${c}</button>`).join('');
   fcDeck=fcCat==='All'?[...flashcards]:flashcards.filter(f=>f.cat===fcCat);
   fcIndex=0;fcFlipped=false;
@@ -399,10 +874,12 @@ function nextCard(){fcIndex=(fcIndex+1)%fcDeck.length;fcFlipped=false;renderFlas
 function prevCard(){fcIndex=(fcIndex-1+fcDeck.length)%fcDeck.length;fcFlipped=false;renderFlashcard()}
 function shuffleCards(){fcDeck.sort(()=>Math.random()-.5);fcIndex=0;fcFlipped=false;renderFlashcard()}
 
-// ── QUIZ ──
+// ══════════════════════════════════════
+// QUIZ
+// ══════════════════════════════════════
 let quizQs=[],quizIndex=0,quizScore=0,quizCat='All',quizAnswered=false;
 function initQuiz(){
-  const cats=['All','Organisms','Amino Acids'];
+  const cats=['All','Organisms','Amino Acids','Staining'];
   document.getElementById('quizFilter').innerHTML=cats.map(c=>`<button class="${c===quizCat?'active':''}" onclick="quizCat='${c}';initQuiz()">${c}</button>`).join('');
   const all=buildQuizQuestions();
   quizQs=(quizCat==='All'?all:all.filter(q=>q.cat===quizCat)).sort(()=>Math.random()-.5).slice(0,15);
@@ -413,7 +890,9 @@ function initQuiz(){
 function renderQuiz(){
   if(quizQs.length===0){document.getElementById('quizBox').innerHTML='<h3>No questions available</h3>';return;}
   if(quizIndex>=quizQs.length){
-    document.getElementById('quizBox').innerHTML=`<h3>Quiz Complete!</h3><p style="font-size:1.5rem;margin:20px 0;color:var(--green)">${quizScore} / ${quizQs.length}</p><p style="color:var(--muted);margin-bottom:20px">${quizScore/quizQs.length>=.8?'Excellent work! 🎉':quizScore/quizQs.length>=.6?'Good job! Keep studying 📖':'Keep practicing! You got this 💪'}</p><button class="btn-shuffle" onclick="initQuiz()">Try Again</button>`;
+    const pct=quizScore/quizQs.length;
+    document.getElementById('quizBox').innerHTML=`<h3>Quiz Complete!</h3><p style="font-size:1.5rem;margin:20px 0;color:var(--green)">${quizScore} / ${quizQs.length}</p><p style="color:var(--muted);margin-bottom:20px">${pct>=.8?'Excellent work!':pct>=.6?'Good job! Keep studying':'Keep practicing! You got this'}</p><button class="btn-shuffle" onclick="initQuiz()">Try Again</button>`;
+    document.getElementById('qProgress').style.width='100%';
     return;
   }
   const q=quizQs[quizIndex];
@@ -421,36 +900,25 @@ function renderQuiz(){
   document.getElementById('qScore').textContent=quizScore;
   document.getElementById('qProgress').style.width=`${(quizIndex/quizQs.length)*100}%`;
   quizAnswered=false;
-  document.getElementById('quizBox').innerHTML=`<h3>${q.q}</h3><div class="quiz-options">${q.options.map((opt,i)=>`<button class="quiz-option" onclick="answerQuiz(this,'${esc(opt)}','${esc(q.correct)}')">${opt}</button>`).join('')}</div>`;
+  document.getElementById('quizBox').innerHTML=`<h3>${q.q}</h3><div class="quiz-options">${q.options.map(opt=>`<button class="quiz-option" onclick="answerQuiz(this,'${esc(opt)}','${esc(q.correct)}')">${opt}</button>`).join('')}</div>`;
 }
-function esc(s){return s.replace(/'/g,"\\'").replace(/"/g,'&quot;')}
+function esc(s){return s.replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/"/g,'&quot;')}
 function answerQuiz(el,selected,correct){
   if(quizAnswered)return;
   quizAnswered=true;
-  const opts=document.querySelectorAll('.quiz-option');
-  opts.forEach(o=>{
-    if(o.textContent===correct.replace(/&quot;/g,'"'))o.classList.add('correct');
-    if(o===el&&o.textContent!==correct.replace(/&quot;/g,'"'))o.classList.add('wrong');
+  const corr=correct.replace(/&quot;/g,'"').replace(/\\'/g,"'").replace(/\\\\/g,'\\');
+  document.querySelectorAll('.quiz-option').forEach(o=>{
+    if(o.textContent===corr)o.classList.add('correct');
+    if(o===el&&o.textContent!==corr)o.classList.add('wrong');
     o.style.pointerEvents='none';
   });
   if(selected===correct)quizScore++;
   setTimeout(()=>{quizIndex++;renderQuiz()},1200);
 }
 
-// ── STAINS ──
-function renderStains(){
-  document.getElementById('stainsContent').innerHTML=
-    '<div class="sectitle">Laboratory Staining Techniques</div>'+
-    labStains.map(s=>'<div class="card scard">'+
-      '<h3>'+s.name+'</h3>'+
-      '<div class="ssteps">'+s.steps.map((st,j)=>'<div class="stp"><div class="stp-n">'+(j+1)+'</div><span style="font-size:13px">'+st+'</span></div>').join('')+'</div>'+
-      '<div class="sinfo">'+
-        '<div class="sibox" style="background:rgba(52,211,153,.1);border-color:rgba(52,211,153,.3)"><h5 style="color:var(--green)">Result</h5><p>'+s.result+'</p></div>'+
-        '<div class="sibox" style="background:rgba(251,191,36,.1);border-color:rgba(251,191,36,.3)"><h5 style="color:var(--yellow)">Pro Tip</h5><p>'+s.tip+'</p></div>'+
-      '</div></div>').join('');
-}
-
-// ── TIMERS ──
+// ══════════════════════════════════════
+// TIMERS
+// ══════════════════════════════════════
 function renderTimers(){
   document.getElementById('timersContent').innerHTML=
     '<div style="max-width:560px;margin:0 auto"><div class="sectitle">Lab Timers</div>'+
@@ -474,7 +942,9 @@ function togT(i){
 }
 function rstT(i){clearInterval(timers[i].iv);timers[i].r=timers[i].d;timers[i].on=false;renderTimers();}
 
-// ── INIT ──
+// ══════════════════════════════════════
+// INIT
+// ══════════════════════════════════════
 renderOrganisms();
 </script>
 </body>

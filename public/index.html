@@ -43,7 +43,7 @@ nav button.active{background:var(--accent);color:#fff}
 .quiz-box{text-align:center;padding:20px}
 .quiz-box h3{font-size:1.15rem;margin-bottom:20px;color:var(--text)}
 .quiz-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:600px;margin:0 auto}
-.quiz-option{padding:14px;border:2px solid var(--border);border-radius:10px;background:var(--card);color:var(--text);cursor:pointer;font-size:.95rem;transition:.2s;text-align:left;min-height:48px}
+.quiz-option{padding:14px;border:2px solid var(--border);border-radius:10px;background:var(--card);color:var(--text);cursor:pointer;font-size:.85rem;transition:.2s;text-align:left;min-height:48px;word-break:break-word;line-height:1.4}
 .quiz-option:hover{border-color:var(--accent)}
 .quiz-option.correct{border-color:var(--green);background:rgba(52,211,153,.15)}
 .quiz-option.wrong{border-color:var(--red);background:rgba(251,113,133,.15)}
@@ -625,7 +625,7 @@ function buildQuizQuestions(){
     qs.push({cat:"Amino Acids",q:`${a.name} is classified as:`,correct:a.type,options:getRandomOptions(["Nonpolar","Polar","Positive","Negative"],a.type,3)});
   });
   labStains.forEach(s=>{
-    qs.push({cat:"Staining",q:`What does the ${s.name} show?`,correct:s.result.substring(0,60)+'...',options:getRandomOptions(labStains.map(x=>x.result.substring(0,60)+'...'),s.result.substring(0,60)+'...',3)});
+    qs.push({cat:"Staining",q:`What does the ${s.name} show?`,correct:s.result,options:getRandomOptions(labStains.map(x=>x.result),s.result,3)});
   });
   return qs;
 }
